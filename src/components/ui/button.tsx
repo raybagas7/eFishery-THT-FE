@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./button.module.scss";
 import classNames from "classnames";
+import { IButtonProps } from "@/interfaces/components";
 
 const Button = ({
   children,

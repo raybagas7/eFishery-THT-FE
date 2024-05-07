@@ -1,7 +1,7 @@
 // variables
 @import "_variables";
 
-// base & layout
+// layout
 @import "breakpoints";
 
 // colors
@@ -9,7 +9,4 @@
 
 // utilities (margin, padding, opacity, ...)
 @import "utilities";
-
-.primary {
-  background-color: $primary;
-}
+@import "base";
