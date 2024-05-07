@@ -6,6 +6,9 @@
   display: inline-block;
   border: 0;
   background-color: $bg-color;
+  &:focus {
+    outline: none;
+  }
 }
 
 .button {
