@@ -1,9 +1,9 @@
 // theme colors
 $primary: #4dc7a2 !default;
-$secondary: #f3f9f7 !default;
+$secondary: #f5f5f5 !default;
 $error: #d32752 !default;
 $info: #f6c31c !default;
-$muted: #f5f5f5 !default;
+$muted: #cecece !default;
 
 // color palette
 $colors: (
@@ -13,6 +13,7 @@ $colors: (
   "info": $info,
   "black": black,
   "white": white,
+  "outline": #ffffff00,
 );
 
 // spacing
@@ -22,6 +23,7 @@ $base-margin: 0.75rem !default;
 // borders
 $base-border-thickness: 1px !default;
 $base-border-radius: 20px !default;
+$rounded-radius: 50% !default;
 
 // box-shadow
 $base-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1) !default;

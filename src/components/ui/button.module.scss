@@ -1,0 +1,68 @@
+@import "../../styles/index.module.scss";
+
+@mixin btn($bg-color: #e2e2e2) {
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  border: 0;
+  padding: $base-padding $base-padding * 2;
+  border-radius: $base-border-radius;
+  background-color: $bg-color;
+}
+
+.button {
+  @include btn;
+
+  &.button_sm {
+    font-size: $font-size-sm;
+    padding: $base-padding - 0.25 $base-padding + 0.75;
+    border-radius: $base-border-radius - 15;
+  }
+
+  &.button_base {
+    font-size: $base-font-size;
+    padding: $base-padding $base-padding + 1;
+    border-radius: $base-border-radius - 10;
+  }
+
+  &.button_lg {
+    font-size: $font-size-lg;
+    padding: $base-padding + 0.25 $base-padding + 1.25;
+    border-radius: $base-border-radius;
+  }
+}
+
+@each $key, $val in $colors {
+  .button_#{$key} {
+    @include btn($val);
+
+    @if ($key == "outline") {
+      outline: $primary solid 2px;
+      &:hover {
+        background-color: $primary;
+        color: #ffffff;
+      }
+    } @else {
+      &:hover {
+        background-color: lighten($color: $val, $amount: 5);
+      }
+    }
+  }
+
+  .button_outlined-#{$key} {
+    @include btn(white);
+    border: $base-border-thickness solid $val;
+    &:hover {
+      background-color: $val;
+    }
+  }
+
+  .button_complement-#{$key} {
+    @include btn($val);
+    color: light-comp($val);
+    &:hover {
+      color: $val;
+      background-color: light-comp($val);
+    }
+  }
+}
