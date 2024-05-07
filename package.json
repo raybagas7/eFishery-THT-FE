@@ -16,10 +16,12 @@
     "test-husk": "npm run check-format && npm run lint && npm run check-types && npm run build"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.35.1",
     "next": "14.2.3",
     "next-pwa": "^5.6.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
