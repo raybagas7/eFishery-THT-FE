@@ -2,6 +2,20 @@
 
 .commodities_section {
   padding: 0 20px;
+
+  .page_header_box {
+    display: flex;
+    justify-content: space-between;
+
+    .action_box > * + * {
+      margin-left: 0.75rem;
+    }
+
+    h1 {
+      font-size: 18px;
+    }
+  }
+
   .commodities_contaier {
     border-radius: 12px;
     background-color: $primaryBg;

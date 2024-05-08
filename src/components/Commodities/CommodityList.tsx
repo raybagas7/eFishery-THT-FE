@@ -4,6 +4,8 @@ import React from "react";
 import style from "./CommodityList.module.scss";
 import Button from "../ui/button";
 import CommodityCard from "./CommodityCard";
+import Link from "next/link";
+import { RiFilter2Line, RiUserAddLine } from "react-icons/ri";
 
 const CommodityList = () => {
   const { isPending, isError, data, isFetching, fetchNextPage, hasNextPage } =
@@ -34,6 +36,15 @@ const CommodityList = () => {
 
   return (
     <section className={style.commodities_section}>
+      <div className={style.page_header_box}>
+        <h1>Commodity List</h1>
+        <div className={style.action_box}>
+          <RiFilter2Line />
+          <Link href={"/commodity/add"}>
+            <RiUserAddLine />
+          </Link>
+        </div>
+      </div>
       <div className={style.commodities_contaier}>
         {data.pages.map((page) => {
           return (
