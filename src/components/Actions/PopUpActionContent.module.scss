@@ -1,0 +1,37 @@
+@import "@/styles/index.module.scss";
+
+.popup_content_container {
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
+  padding: 0 20px;
+  padding-bottom: 18px;
+
+  .dragable_area {
+    display: flex;
+    justify-content: center;
+    padding: 18px 0;
+    cursor: grab;
+
+    button {
+      height: 6px;
+      width: 32px;
+      border-radius: 9999px;
+      border: none;
+      outline: none;
+      cursor: grab;
+      background-color: black;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .options_box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .options_box > * + * {
+    margin-top: 0.75rem;
+  }
+}

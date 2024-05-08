@@ -5,10 +5,17 @@ import style from "./CommodityList.module.scss";
 import Button from "../ui/button";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { formatDate } from "@/libs/utils";
+import { usePopup } from "@/store/usePopUp";
+import PopUpActionContent from "../Actions/PopUpActionContent";
 
 const CommodityList = () => {
+  const { showPopup } = usePopup();
   const { isPending, isError, data, isFetching, fetchNextPage, hasNextPage } =
     useCommodityList();
+
+  const onOptionClick = () => {
+    showPopup(<PopUpActionContent />);
+  };
 
   const handleLoadMore = () => {
     fetchNextPage();
@@ -58,7 +65,10 @@ const CommodityList = () => {
                             )}
                           </p>
                         </div>
-                        <BsThreeDotsVertical />
+                        <BsThreeDotsVertical
+                          className={style.commodity_option}
+                          onClick={onOptionClick}
+                        />
                       </div>
                     </li>
                   ),

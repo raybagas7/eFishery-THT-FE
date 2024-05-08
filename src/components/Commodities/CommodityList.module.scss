@@ -21,6 +21,13 @@
           margin-bottom: 12px;
         }
       }
+
+      .commodity_option {
+        cursor: pointer;
+        &:hover {
+          color: $primary;
+        }
+      }
     }
 
     .button_box {
