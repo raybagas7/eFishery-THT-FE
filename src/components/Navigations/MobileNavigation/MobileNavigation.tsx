@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./MobileNavigation.module.scss";
 import Image from "next/image";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const MobileNavigation = () => {
   return (
@@ -12,7 +13,7 @@ const MobileNavigation = () => {
           height={50}
           alt="eFishery Icon"
         />
-        <button>humburger</button>
+        <GiHamburgerMenu className={style.hamburger} />
       </div>
     </div>
   );
