@@ -8,3 +8,14 @@ export type Commodity = {
   tgl_parsed: string;
   timestamp: string;
 };
+
+export type ProvinceObject = {
+  [province: string]: {
+    value: string | null;
+    label: string | null;
+    cities: {
+      value: string | null;
+      label: string | null;
+    }[];
+  };
+};

@@ -7,6 +7,7 @@ const Button = ({
   children,
   variant = "primary",
   size = "base",
+  type = "button",
   ...props
 }: IButtonProps) => {
   const variantClasses = {
@@ -28,7 +29,7 @@ const Button = ({
     sizeClasses[`${size}`],
   );
   return (
-    <button {...props} className={`${buttonContainerClass}`}>
+    <button type={type} {...props} className={`${buttonContainerClass}`}>
       {children}
     </button>
   );

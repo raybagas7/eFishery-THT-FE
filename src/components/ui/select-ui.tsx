@@ -17,7 +17,6 @@ function SelectUi<
     <div className={style.select_input}>
       <label htmlFor={props.name}>{props.name}</label>
       <Select
-        id={props.name}
         styles={{
           placeholder: (baseStyles) => ({
             ...baseStyles,

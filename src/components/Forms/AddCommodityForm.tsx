@@ -1,84 +1,46 @@
+import "react-datepicker/dist/react-datepicker.css";
 import React, { useState } from "react";
 import InputUi from "../ui/input-ui";
-import Calendar from "../ui/calendar";
 import SelectUi from "../ui/select-ui";
 import { useQuery } from "@tanstack/react-query";
+import { fetchArea, fetchSize } from "@/libs/service";
+import { z, ZodType } from "zod";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Button from "../ui/button";
+import DatePicker from "react-datepicker";
+import CalendarButton from "../ui/calendar-button";
 
-type ProvinceObject = {
-  [province: string]: {
-    value: string | null;
-    label: string | null;
-    cities: {
-      value: string | null;
-      label: string | null;
-    }[];
-  };
-};
-
-const fetchSize = async () => {
-  const response = await fetch(`${process.env.BASE_API_URL}/option_size`);
-  const sizes: { size: string }[] = await response.json();
-  return sizes.map((size) => ({
-    value: size.size,
-    label: size.size,
-  }));
-};
-const fetchArea = async () => {
-  const response = await fetch(`${process.env.BASE_API_URL}/option_area`);
-  const areas: { province: string | null; city: string | null }[] =
-    await response.json();
-
-  console.log(areas);
-
-  let areaData: ProvinceObject = {};
-
-  areas.forEach((area) => {
-    const { province, city } = area;
-    if (province !== null && city !== null) {
-      // Check if neither province nor city is null
-      if (!areaData[province]) {
-        areaData[province] = {
-          value: province,
-          label: province,
-          cities: [{ value: city, label: city }],
-        };
-      } else {
-        const cityExists = areaData[province].cities.some(
-          (c: { value: string | null; label: string | null }) =>
-            c.value === city,
-        );
-        if (!cityExists && city !== "ASD") {
-          areaData[province].cities.push({
-            value: city,
-            label: city,
-          });
-        }
-      }
-    }
-  });
-
-  return {
-    areaData,
-    province: Object.values(areaData).map(({ value, label }) => {
-      if (value === null || label === null) {
-        return {
-          value: "UNKNOWN",
-          label: "UNKNOWN",
-        };
-      } else {
-        return {
-          value,
-          label,
-        };
-      }
-    }),
-  };
+type FormData = {
+  komoditas: string;
+  harga: number;
+  tanggal: Date;
+  ukuran: number;
+  provinsi: string;
+  kota: string;
 };
 
 const AddCommodityForm = () => {
-  const [selectedSize, setSize] = useState<string>();
   const [selectedProvince, setProvince] = useState<string>();
-  const [selectedCity, setCity] = useState<string>();
+
+  const schema: ZodType<FormData> = z.object({
+    komoditas: z.string().min(2).max(100),
+    harga: z.number().min(1),
+    tanggal: z.date(),
+    ukuran: z.number().min(1),
+    provinsi: z.string().min(1),
+    kota: z.string().min(1),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    control,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
 
   const { data: optionSize, isLoading: sizeLoading } = useQuery({
     queryKey: ["option-sizes"],
@@ -90,39 +52,66 @@ const AddCommodityForm = () => {
     queryFn: fetchArea,
   });
 
-  console.log(selectedSize);
-  console.log(selectedCity);
+  console.log(errors);
+
+  const onSubmit = (data: FormData) => {
+    console.log("IT WORKED", data);
+  };
 
   return (
-    <form>
-      <InputUi type="text" name="Nama Komoditas" />
-      <InputUi type="number" name="Harga" />
-      <Calendar name="Calendar" />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <InputUi
+        type="text"
+        {...register("komoditas")}
+        onChange={(e) => setValue("komoditas", e.target.value)}
+      />
+      <InputUi
+        type="number"
+        {...register("harga")}
+        onChange={(e) => setValue("harga", parseInt(e.target.value))}
+      />
+      <Controller
+        control={control}
+        name="tanggal"
+        render={({ field }) => (
+          <DatePicker
+            showMonthDropdown
+            showYearDropdown
+            scrollableYearDropdown
+            selected={field.value}
+            onChange={(date) => field.onChange(date)}
+            customInput={<CalendarButton />}
+            withPortal
+            yearDropdownItemNumber={50}
+          />
+        )}
+      />
       <SelectUi
-        name="Ukuran"
+        {...register("ukuran")}
         options={optionSize}
-        onChange={(e) => e && setSize(e.value)}
+        onChange={(e) => e && setValue("ukuran", parseInt(e.value as string))}
         placeholder={sizeLoading ? "Loading" : "Pilih ukuran"}
       />
       <SelectUi
-        name="Provinsi"
+        {...register("provinsi")}
         options={optionArea?.province}
         onChange={(e) => {
-          e && setProvince(e.value);
+          e && setValue("provinsi", e.value as string);
+          e && setProvince(e.value as string);
         }}
         placeholder={sizeArea ? "Loading" : "Pilih provinsi"}
       />
-
       <SelectUi
-        name="Kota"
+        {...register("kota")}
         options={
           selectedProvince
             ? optionArea?.areaData[`${selectedProvince}`].cities
             : undefined
         }
-        onChange={(e) => e && setCity(e.value as string)}
+        onChange={(e) => e && setValue("kota", e.value as string)}
         placeholder={sizeArea ? "Loading" : "Pilih Kota"}
       />
+      <Button type="submit">Submit</Button>
     </form>
   );
 };
