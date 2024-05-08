@@ -34,8 +34,8 @@ const PopUpActionContent = () => {
         <button />
       </div>
       <div className={style.options_box}>
-        <Link href={"/detail/id"}>View</Link>
-        <Link href={"/edit/id"}>Edit</Link>
+        <Link href={"/commodity/detail/id"}>View</Link>
+        <Link href={"/commodity/edit/id"}>Edit</Link>
         <Link href={"/delete"}>Delete</Link>
       </div>
     </motion.div>
