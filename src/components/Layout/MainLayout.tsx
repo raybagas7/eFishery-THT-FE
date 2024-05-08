@@ -1,6 +1,8 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { IUserSellerLayout } from "@/interfaces/components";
+import style from "./MainLayout.module.scss";
+import DesktopNavigation from "../Navigations/DesktopNavigation/DesktopNavigation";
 
 function MainLayout({ children }: IUserSellerLayout) {
   const queryClient = new QueryClient({
@@ -11,9 +13,10 @@ function MainLayout({ children }: IUserSellerLayout) {
     },
   });
   return (
-    <div>
+    <div className={style.main_layout}>
+      <DesktopNavigation />
       <QueryClientProvider client={queryClient}>
-        <div>{children}</div>
+        <div className={style.children_container}>{children}</div>
       </QueryClientProvider>
     </div>
   );

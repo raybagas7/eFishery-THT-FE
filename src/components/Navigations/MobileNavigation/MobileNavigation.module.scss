@@ -1,0 +1,21 @@
+@import "@/styles/index.module.scss";
+
+.mobile_nav_container {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $primaryBg;
+  width: 100%;
+
+  .box {
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
