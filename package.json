@@ -16,6 +16,7 @@
     "test-husk": "npm run check-format && npm run lint && npm run check-types && npm run build"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@tanstack/react-query": "^5.35.1",
     "classnames": "^2.5.1",
     "framer-motion": "^11.1.9",
@@ -24,9 +25,11 @@
     "react": "^18",
     "react-datepicker": "^6.9.0",
     "react-dom": "^18",
+    "react-hook-form": "^7.51.4",
     "react-icons": "^5.2.1",
     "react-select": "^5.8.0",
     "stein-js-client": "^0.0.2",
+    "zod": "^3.23.8",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
