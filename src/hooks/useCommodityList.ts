@@ -12,7 +12,7 @@ export async function fetchCommodities({
 }> {
   try {
     const response = await fetch(
-      `https://stein.efishery.com/v1/storages/5e1edf521073e315924ceab4/list?limit=5&offset=${pageParam * 10}`,
+      `https://stein.efishery.com/v1/storages/5e1edf521073e315924ceab4/list?limit=10&offset=${pageParam * 10}`,
     );
 
     if (!response.ok) {

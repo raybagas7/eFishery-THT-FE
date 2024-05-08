@@ -6,9 +6,6 @@
   display: inline-block;
   border: 0;
   background-color: $bg-color;
-  &:focus {
-    outline: none;
-  }
 }
 
 .button {
@@ -44,6 +41,9 @@
         color: #ffffff;
       }
     } @else {
+      &:focus {
+        outline: none;
+      }
       &:hover {
         background-color: lighten($color: $val, $amount: 5);
       }
