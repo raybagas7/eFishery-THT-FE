@@ -10,7 +10,7 @@ const CommodityCard = ({ commodityData }: ICommodityCard) => {
   const { showPopup } = usePopup();
 
   const onOptionClick = () => {
-    showPopup(<PopUpActionContent />);
+    showPopup(<PopUpActionContent uuid={commodityData.uuid} />);
   };
 
   return (

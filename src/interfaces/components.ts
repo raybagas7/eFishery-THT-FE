@@ -22,3 +22,7 @@ export interface ICommodityCard extends IDetailCommodity {
   index?: number;
   page?: number;
 }
+
+export interface IPopUpActionContent {
+  uuid: string;
+}

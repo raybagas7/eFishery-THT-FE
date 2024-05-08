@@ -3,8 +3,9 @@ import style from "./PopUpActionContent.module.scss";
 import { usePopup } from "@/store/usePopUp";
 import { motion, PanInfo } from "framer-motion";
 import Link from "next/link";
+import { IPopUpActionContent } from "@/interfaces/components";
 
-const PopUpActionContent = () => {
+const PopUpActionContent = ({ uuid }: IPopUpActionContent) => {
   const { hidePopup } = usePopup();
 
   const handleDragEnd = (_: unknown, info: PanInfo) => {
@@ -34,7 +35,7 @@ const PopUpActionContent = () => {
         <button />
       </div>
       <div className={style.options_box}>
-        <Link href={"/commodity/detail/id"}>View</Link>
+        <Link href={`/commodity/detail/${uuid}`}>View</Link>
         <Link href={"/commodity/edit/id"}>Edit</Link>
         <Link href={"/delete"}>Delete</Link>
       </div>
