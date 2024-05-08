@@ -1,3 +1,24 @@
-.rdp {
-  background-color: red($color: #000000);
+@import "@/styles/index.module.scss";
+
+.custom_input_calendar {
+  padding: 7px 20px;
+  border: none;
+  background-color: $primary;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: fit-content;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  gap: 10px;
+
+  &:hover {
+    background-color: lighten($color: $primary, $amount: 5);
+  }
+
+  &:focus {
+    outline: none;
+  }
 }

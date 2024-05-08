@@ -1,4 +1,5 @@
 import { Commodity } from "@/types/alltypes";
+import React from "react";
 
 export interface IButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -25,4 +26,13 @@ export interface ICommodityCard extends IDetailCommodity {
 
 export interface IPopUpActionContent {
   uuid: string;
+}
+
+export interface ICustomInput {
+  value?: string;
+  onClick?: () => void;
+}
+
+export interface ICalendar {
+  buttonContent?: React.ReactNode;
 }
