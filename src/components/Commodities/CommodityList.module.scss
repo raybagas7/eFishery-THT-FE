@@ -6,6 +6,7 @@
   .page_header_box {
     display: flex;
     justify-content: space-between;
+    margin: 20px 0;
 
     .action_box > * + * {
       margin-left: 0.75rem;
