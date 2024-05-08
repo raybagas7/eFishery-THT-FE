@@ -75,6 +75,7 @@ const AddCommodityForm = () => {
         name="tanggal"
         render={({ field }) => (
           <DatePicker
+            name={field.name}
             showMonthDropdown
             showYearDropdown
             scrollableYearDropdown
