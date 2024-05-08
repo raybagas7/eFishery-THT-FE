@@ -18,10 +18,12 @@
   "dependencies": {
     "@tanstack/react-query": "^5.35.1",
     "classnames": "^2.5.1",
+    "date-fns": "^3.6.0",
     "framer-motion": "^11.1.9",
     "next": "14.2.3",
     "next-pwa": "^5.6.0",
     "react": "^18",
+    "react-day-picker": "^8.10.1",
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "stein-js-client": "^0.0.2",
