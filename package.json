@@ -25,6 +25,7 @@
     "react-datepicker": "^6.9.0",
     "react-dom": "^18",
     "react-icons": "^5.2.1",
+    "react-select": "^5.8.0",
     "stein-js-client": "^0.0.2",
     "zustand": "^4.5.2"
   },
