@@ -1,3 +1,5 @@
+import { Commodity } from "@/types/alltypes";
+
 export interface IButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "small" | "base" | "large";
@@ -10,4 +12,8 @@ export interface IUserSellerLayout {
 
 export interface IMobileNavigation {
   toggleAside: () => void;
+}
+
+export interface IDetailCommodity {
+  commodityData: Commodity;
 }
