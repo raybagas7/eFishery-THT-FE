@@ -35,9 +35,15 @@ const PopUpActionContent = ({ uuid }: IPopUpActionContent) => {
         <button />
       </div>
       <div className={style.options_box}>
-        <Link href={`/commodity/detail/${uuid}`}>View</Link>
-        <Link href={"/commodity/edit/id"}>Edit</Link>
-        <Link href={"/delete"}>Delete</Link>
+        <Link href={`/commodity/detail/${uuid}`} onClick={hidePopup}>
+          View
+        </Link>
+        <Link href={"/commodity/edit/id"} onClick={hidePopup}>
+          Edit
+        </Link>
+        <Link href={"/delete"} onClick={hidePopup}>
+          Delete
+        </Link>
       </div>
     </motion.div>
   );
