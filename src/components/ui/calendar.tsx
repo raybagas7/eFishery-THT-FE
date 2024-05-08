@@ -5,29 +5,36 @@ import DatePicker from "react-datepicker";
 import style from "./calendar.module.scss";
 import { FaCalendarAlt } from "react-icons/fa";
 
-const Calendar = ({ buttonContent = "Select date" }: ICalendar) => {
+const Calendar = ({
+  buttonContent = "Select date",
+  name,
+  ...rest
+}: ICalendar) => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const CustomInput = forwardRef<HTMLButtonElement>(
     ({ value, onClick }: ICustomInput, ref) => (
-      <button
-        className={style.custom_input_calendar}
-        onClick={onClick}
-        ref={ref}
-      >
-        {value ? value : buttonContent}
-        <FaCalendarAlt />
-      </button>
+      <div className={style.custom_calendar_container}>
+        <label htmlFor={name}>{name}</label>
+        <button
+          id={name}
+          type="button"
+          className={style.custom_input_calendar}
+          onClick={onClick}
+          ref={ref}
+          {...rest}
+        >
+          {value ? value : buttonContent}
+          <FaCalendarAlt />
+        </button>
+      </div>
     ),
   );
-
-  console.log(startDate);
 
   return (
     <div>
       <DatePicker
         showMonthDropdown
         showYearDropdown
-        closeOnScroll={true}
         scrollableYearDropdown
         selected={startDate}
         onChange={(date: Date) => setStartDate(date)}

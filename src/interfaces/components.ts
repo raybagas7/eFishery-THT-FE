@@ -1,5 +1,5 @@
 import { Commodity } from "@/types/alltypes";
-import React, { InputHTMLAttributes } from "react";
+import React, { ButtonHTMLAttributes, InputHTMLAttributes } from "react";
 
 export interface IButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -33,7 +33,7 @@ export interface ICustomInput {
   onClick?: () => void;
 }
 
-export interface ICalendar {
+export interface ICalendar extends ButtonHTMLAttributes<HTMLButtonElement> {
   buttonContent?: React.ReactNode;
 }
 
