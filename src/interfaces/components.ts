@@ -7,3 +7,7 @@ export interface IButtonProps
 export interface IUserSellerLayout {
   children: React.ReactNode;
 }
+
+export interface IMobileNavigation {
+  toggleAside: () => void;
+}

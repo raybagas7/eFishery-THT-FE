@@ -2,8 +2,9 @@ import React from "react";
 import style from "./MobileNavigation.module.scss";
 import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { IMobileNavigation } from "@/interfaces/components";
 
-const MobileNavigation = () => {
+const MobileNavigation = ({ toggleAside }: IMobileNavigation) => {
   return (
     <div className={style.mobile_nav_container}>
       <div className={style.box}>
@@ -13,7 +14,7 @@ const MobileNavigation = () => {
           height={50}
           alt="eFishery Icon"
         />
-        <GiHamburgerMenu className={style.hamburger} />
+        <GiHamburgerMenu onClick={toggleAside} className={style.hamburger} />
       </div>
     </div>
   );

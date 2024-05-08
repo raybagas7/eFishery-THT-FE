@@ -1,11 +1,11 @@
 import React from "react";
 import style from "./DesktopNavigation.module.scss";
-import MobileNavigation from "../MobileNavigation/MobileNavigation";
+import MobileSideBar from "../MobileSideBar/MobileSideBar";
 
 const DesktopNavigation = () => {
   return (
     <>
-      <MobileNavigation />
+      <MobileSideBar />
       <div className={style.desktop_nav_container}>DesktopNavigation</div>
     </>
   );
