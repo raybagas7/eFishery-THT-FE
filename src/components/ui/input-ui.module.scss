@@ -1,0 +1,25 @@
+@import "@/styles/index.module.scss";
+
+.input_container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 14px;
+  }
+
+  .input_box {
+    height: 37px;
+    border: $border solid 1px;
+    border-radius: 8px;
+    padding: 0 12px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 400px;
+
+    &:focus {
+      outline: $primary solid 1px;
+    }
+  }
+}
