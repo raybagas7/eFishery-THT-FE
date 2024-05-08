@@ -17,3 +17,8 @@ export interface IMobileNavigation {
 export interface IDetailCommodity {
   commodityData: Commodity;
 }
+
+export interface ICommodityCard extends IDetailCommodity {
+  index?: number;
+  page?: number;
+}

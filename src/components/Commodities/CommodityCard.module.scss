@@ -1,0 +1,22 @@
+@import "@/styles/index.module.scss";
+
+.commodity_box {
+  padding: 12px;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $primary;
+
+  .commodity_head {
+    p {
+      margin-bottom: 12px;
+    }
+  }
+
+  .commodity_option {
+    cursor: pointer;
+    &:hover {
+      color: $primary;
+    }
+  }
+}

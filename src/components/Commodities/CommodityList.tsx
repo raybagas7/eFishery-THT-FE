@@ -3,19 +3,11 @@ import { useCommodityList } from "@/hooks/useCommodityList";
 import React from "react";
 import style from "./CommodityList.module.scss";
 import Button from "../ui/button";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { formatDate } from "@/libs/utils";
-import { usePopup } from "@/store/usePopUp";
-import PopUpActionContent from "../Actions/PopUpActionContent";
+import CommodityCard from "./CommodityCard";
 
 const CommodityList = () => {
-  const { showPopup } = usePopup();
   const { isPending, isError, data, isFetching, fetchNextPage, hasNextPage } =
     useCommodityList();
-
-  const onOptionClick = () => {
-    showPopup(<PopUpActionContent />);
-  };
 
   const handleLoadMore = () => {
     fetchNextPage();
@@ -47,30 +39,12 @@ const CommodityList = () => {
           return (
             <ul key={page.currentPage}>
               {page?.data?.map(
-                (commodity, index) =>
+                (commodity) =>
                   commodity.uuid && (
-                    <li key={`${commodity}-${index}`}>
-                      <div className={style.commodity_box}>
-                        <div className={style.commodity_head}>
-                          <p>
-                            {commodity.komoditas} -
-                            {commodity.area_kota
-                              ? commodity.area_kota
-                              : "Unknown"}
-                          </p>
-                          <p>
-                            {formatDate(
-                              new Date(commodity.tgl_parsed),
-                              "short",
-                            )}
-                          </p>
-                        </div>
-                        <BsThreeDotsVertical
-                          className={style.commodity_option}
-                          onClick={onOptionClick}
-                        />
-                      </div>
-                    </li>
+                    <CommodityCard
+                      commodityData={commodity}
+                      key={commodity.uuid}
+                    />
                   ),
               )}
             </ul>
