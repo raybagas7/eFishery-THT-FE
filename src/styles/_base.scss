@@ -2,4 +2,9 @@
   min-height: 100dvh;
   background-color: #fafafa;
   padding-top: 72px;
+  padding-bottom: 32px;
+
+  @include media(">tablet") {
+    padding-left: 200px;
+  }
 }
