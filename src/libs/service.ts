@@ -127,3 +127,27 @@ export const fetchEditList = async (data: IEditCommodityPayload[]) => {
 
   return res;
 };
+
+export const fetchRemoveList = async (data: IEditCommodityPayload[]) => {
+  const { uuid } = data[0];
+  console.log(data);
+
+  const removePayload = {
+    condition: { uuid },
+  };
+  console.log(removePayload);
+
+  const response = await fetch(`${process.env.BASE_API_URL}/list`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(removePayload),
+  });
+  console.log(response);
+
+  const res = await response.json();
+  console.log(res);
+
+  return res;
+};

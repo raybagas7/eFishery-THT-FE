@@ -4,12 +4,19 @@ import style from "./PopOverActionContent.module.scss";
 import { FaEdit, FaEye } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa6";
 import Link from "next/link";
+import { useModal } from "@/store/useModal";
+import DeleteConfirmation from "./DeleteConfirmation";
 
 const PopOverActionContent = ({
   commodityData,
 }: {
   commodityData: Commodity;
 }) => {
+  const { showModal } = useModal();
+
+  const onOpenDeleteModal = () => {
+    showModal(<DeleteConfirmation payload={commodityData} />);
+  };
   return (
     <div className={style.popover_content_container}>
       <Link href={`/commodity/detail/${commodityData.uuid}`}>
@@ -24,7 +31,7 @@ const PopOverActionContent = ({
           <span>Edit</span>
         </div>
       </Link>
-      <div>
+      <div onClick={onOpenDeleteModal}>
         <FaTrash />
         <span>Delete</span>
       </div>
