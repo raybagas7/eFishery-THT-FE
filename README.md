@@ -4,7 +4,7 @@
 
 ## Overview
 
-The Fish Farmer Management System is a Frontend Web Application PWA for managing farmer data and price.
+The Fish Commodity Management System is a Frontend Web Application + (PWA) for managing farmer and price data.
 
 ## Prerequisites
 
@@ -13,10 +13,15 @@ The Fish Farmer Management System is a Frontend Web Application PWA for managing
 
 ## Tech Stack
 
+- React 18
 - Next.js 14 with TypeScript
 - Zustand
 - React Query
 - SCSS
+- Zod
+- React Hook Form
+- Framer Motion
+- Next PWA
 
 ## Development Dependencies
 
@@ -24,3 +29,98 @@ The Fish Farmer Management System is a Frontend Web Application PWA for managing
 - ESLint
 - Prettier
 - Jest
+
+## Installation / Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/raybagas7/eFishery-THT-FE.git
+```
+
+Go to the project directory
+
+```bash
+  cd eFishery-THT-FE
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Environment variable
+
+```bash
+  cp .env.example .env
+```
+
+**_follow the .env.example and fill every variable and base api url with your needs_**
+
+Start the application in Development mode.
+
+```bash
+  npm run dev
+```
+
+**_(Web app will run on port 3000)_**
+
+To build and start the application you can run this command
+
+```bash
+  npm run build
+```
+
+```bash
+  npm run start
+```
+
+**_(Web app will run on port 3000)_**
+
+## Development
+
+When you want to continue developing this application, follow these steps:
+
+- **Initialize Husky**: Run the following command to initialize Husky:
+
+  ```bash
+  npm run prepare
+  ```
+
+  Husky will be initiated, and every time you commit, Husky pre-commit will intercept the commit and run tests before it is committed.
+
+  1.**Prettier Test**: Husky will run a Prettier test. If it fails, you must fix it manually by following the Prettier style or by running:
+
+  ```bash
+  npm run write-format
+  ```
+
+  2.**Linter Check**: Husky will perform a linting check. If the linter fails, there will be information in the terminal, and you must fix it manually.
+
+  3.**TypeScript Type Checking**: Husky will check TypeScript types. If it passes, the commit will be completed if you have already defined the commit message. If not, you will need to write the commit message.
+
+  4.**Build Test (Optional)**: Additionally, there is a build test included in the pre-commit file. This test is currently commented out to avoid slowing down the development process, as the build process may take some time. If you want to run the build test, uncomment the script in the pre-commit file.
+
+## Running the apps with Docker
+
+Before get into docker build, ensure you have Docker installed on your machine. You can download and install Docker from the . [official website](https://www.docker.com)
+
+- **Navigate** to the project when you clone this project already.
+- **Build** the Docker image for the Node.js application
+
+  ```bash
+  docker-compose build
+  ```
+
+- **Run** the Docker container
+
+  ```bash
+  docker-compose build
+  ```
+
+  docker-compose up
+
+This command will start the Docker container and run the application.
+
+Once the Docker container is running, you can access the Node.js application by opening a web browser and navigating to localhost:3000.
