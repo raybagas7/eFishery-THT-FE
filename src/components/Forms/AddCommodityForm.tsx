@@ -1,5 +1,5 @@
 import "react-datepicker/dist/react-datepicker.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputUi from "../ui/input-ui";
 import SelectUi from "../ui/select-ui";
 import { useQuery } from "@tanstack/react-query";
@@ -10,6 +10,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Button from "../ui/button";
 import DatePicker from "react-datepicker";
 import CalendarButton from "../ui/calendar-button";
+import ErrorMessage from "../ui/error-msg";
+import { formatDate } from "@/libs/utils";
 
 type FormData = {
   komoditas: string;
@@ -22,6 +24,7 @@ type FormData = {
 
 const AddCommodityForm = () => {
   const [selectedProvince, setProvince] = useState<string>();
+  const [selectedCity, setCity] = useState<string | null>(null);
 
   const schema: ZodType<FormData> = z.object({
     komoditas: z.string().min(2).max(100),
@@ -56,7 +59,12 @@ const AddCommodityForm = () => {
 
   const onSubmit = (data: FormData) => {
     console.log("IT WORKED", data);
+    console.log(formatDate(data.tanggal, "long"));
   };
+
+  useEffect(() => {
+    setCity(null);
+  }, [selectedProvince]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -65,11 +73,14 @@ const AddCommodityForm = () => {
         {...register("komoditas")}
         onChange={(e) => setValue("komoditas", e.target.value)}
       />
+      {errors.komoditas && <ErrorMessage message={errors.komoditas.message} />}
       <InputUi
         type="number"
         {...register("harga")}
         onChange={(e) => setValue("harga", parseInt(e.target.value))}
       />
+      {errors.harga && <ErrorMessage message={errors.harga.message} />}
+
       <Controller
         control={control}
         name="tanggal"
@@ -87,21 +98,30 @@ const AddCommodityForm = () => {
           />
         )}
       />
+      {errors.tanggal && <ErrorMessage message={errors.tanggal.message} />}
+
       <SelectUi
         {...register("ukuran")}
         options={optionSize}
         onChange={(e) => e && setValue("ukuran", parseInt(e.value as string))}
+        isLoading={sizeLoading}
         placeholder={sizeLoading ? "Loading" : "Pilih ukuran"}
       />
+      {errors.ukuran && <ErrorMessage message={errors.ukuran.message} />}
+
       <SelectUi
         {...register("provinsi")}
         options={optionArea?.province}
         onChange={(e) => {
           e && setValue("provinsi", e.value as string);
           e && setProvince(e.value as string);
+          e && setValue("kota", "");
         }}
+        isLoading={sizeArea}
         placeholder={sizeArea ? "Loading" : "Pilih provinsi"}
       />
+      {errors.provinsi && <ErrorMessage message={errors.provinsi.message} />}
+
       <SelectUi
         {...register("kota")}
         options={
@@ -109,10 +129,19 @@ const AddCommodityForm = () => {
             ? optionArea?.areaData[`${selectedProvince}`].cities
             : undefined
         }
-        onChange={(e) => e && setValue("kota", e.value as string)}
+        isLoading={sizeArea}
+        onChange={(e) => {
+          e && setValue("kota", e.value as string);
+          e && setCity(e.value as string);
+        }}
+        value={{ value: selectedCity, label: selectedCity }}
         placeholder={sizeArea ? "Loading" : "Pilih Kota"}
       />
-      <Button type="submit">Submit</Button>
+      {errors.kota && <ErrorMessage message={errors.kota.message} />}
+
+      <div>
+        <Button type="submit">Submit</Button>
+      </div>
     </form>
   );
 };

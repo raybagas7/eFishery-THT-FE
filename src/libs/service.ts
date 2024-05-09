@@ -14,8 +14,6 @@ export const fetchArea = async () => {
   const areas: { province: string | null; city: string | null }[] =
     await response.json();
 
-  console.log(areas);
-
   let areaData: ProvinceObject = {};
 
   areas.forEach((area) => {

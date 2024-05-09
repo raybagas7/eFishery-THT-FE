@@ -45,3 +45,7 @@ export interface IOption {
   value: string;
   label: string;
 }
+
+export interface IErrorMessage {
+  message: React.ReactNode;
+}
