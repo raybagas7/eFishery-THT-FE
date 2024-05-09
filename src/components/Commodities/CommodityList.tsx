@@ -7,8 +7,7 @@ import Link from "next/link";
 import { RiFilter2Line, RiUserAddLine } from "react-icons/ri";
 import Spinner from "../ui/spinner";
 import Ellipsis from "../ui/ellipsis";
-import InputUi from "../ui/input-ui";
-import { FaSearch } from "react-icons/fa";
+import CommoditySearch from "./CommoditySearch";
 
 const CommodityList = () => {
   const [search, setSearch] = useState("");
@@ -59,25 +58,11 @@ const CommodityList = () => {
           </Link>
         </div>
       </div>
-      <form className={style.search_box} onSubmit={handleSearchSubmit}>
-        <div className={style.input_wrapper}>
-          <InputUi
-            id="search"
-            placeholder="Cari komoditas"
-            variant="small"
-            value={search}
-            onChange={handleSearch}
-          />
-        </div>
-        <div className={style.submit_button_wrapper}>
-          <Button size="small" variant="outline" type="submit">
-            <div className={style.button_child}>
-              Search
-              <FaSearch />
-            </div>
-          </Button>
-        </div>
-      </form>
+      <CommoditySearch
+        search={search}
+        handleSearch={handleSearch}
+        handleSearchSubmit={handleSearchSubmit}
+      />
       <div className={style.commodities_contaier}>
         {data.pages.map((page) => {
           return (

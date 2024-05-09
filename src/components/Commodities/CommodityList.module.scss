@@ -24,28 +24,6 @@
     }
   }
 
-  .search_box {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    .input_wrapper {
-      width: 100%;
-    }
-
-    .submit_button_wrapper {
-      button {
-        padding: 3px 5px;
-      }
-      .button_child {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-    }
-  }
-
   .commodities_contaier {
     border-radius: 12px;
     background-color: $primaryBg;

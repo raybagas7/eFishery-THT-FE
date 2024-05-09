@@ -98,3 +98,9 @@ export interface IListNavigation {
   to: string;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
+
+export interface ICommoditySearch {
+  handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  search: string;
+  handleSearchSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
