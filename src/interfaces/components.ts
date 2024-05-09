@@ -82,6 +82,8 @@ export interface IAddConfirmation {
   payload: IAddCommodityPayload;
 }
 
+export interface IDeleteConfirmation extends IEditConfirmation {}
+
 export interface IEditConfirmation {
   payload: IEditCommodityPayload;
 }

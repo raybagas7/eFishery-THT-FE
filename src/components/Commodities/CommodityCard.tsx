@@ -18,7 +18,7 @@ const CommodityCard = ({ commodityData, index, page }: ICommodityCard) => {
   };
 
   const onOptionClick = () => {
-    showPopup(<PopUpActionContent uuid={commodityData.uuid} />);
+    showPopup(<PopUpActionContent payload={commodityData} />);
   };
 
   const detailVariants = {

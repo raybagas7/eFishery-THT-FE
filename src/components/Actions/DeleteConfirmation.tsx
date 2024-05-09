@@ -1,4 +1,4 @@
-import { IAddConfirmation } from "@/interfaces/components";
+import { IDeleteConfirmation } from "@/interfaces/components";
 import { fetchRemoveList } from "@/libs/service";
 import { useModal } from "@/store/useModal";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import style from "./Confirmation.module.scss";
 import Ellipsis from "../ui/ellipsis";
 
-const DeleteConfirmation = ({ payload }: IAddConfirmation) => {
+const DeleteConfirmation = ({ payload }: IDeleteConfirmation) => {
   const { hideModal } = useModal();
   const queryClient = useQueryClient();
   const router = useRouter();

@@ -29,6 +29,19 @@
   .options_box {
     display: flex;
     flex-direction: column;
+
+    div {
+      padding: 4px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: fit-content;
+      font-weight: 600;
+      &:hover {
+        color: $primary;
+      }
+    }
   }
 
   .options_box > * + * {
