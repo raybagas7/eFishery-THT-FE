@@ -7,8 +7,8 @@ const CommodityEmpty = () => {
     <div className={style.empty_commodity_container}>
       <MdSearchOff />
       <div className={style.text_information}>
-        <h2>No Commodity Found</h2>
-        <p>There is no Commodity right now</p>
+        <h2>Komoditas tidak dapat ditemukan</h2>
+        <p>Saat ini komoditas yang ada cari tidak tersedia</p>
       </div>
     </div>
   );
