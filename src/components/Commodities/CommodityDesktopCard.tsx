@@ -19,10 +19,12 @@ const CommodityDesktopCard = ({
           <p>{commodityData.komoditas}</p>
         </div>
         <div>
-          <p>{commodityData.area_provinsi}</p>
+          <p>
+            {commodityData.area_provinsi ? commodityData.area_provinsi : "-"}
+          </p>
         </div>
         <div>
-          <p>{commodityData.area_kota}</p>
+          <p>{commodityData.area_kota ? commodityData.area_kota : "-"}</p>
         </div>
         <div>
           <p>{commodityData.size}</p>

@@ -55,7 +55,7 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
   const onSubmit = (data: FormData) => {
     const payload: IAddCommodityPayload = {
       uuid: crud === "edit" && commodityData ? commodityData?.uuid : uuidv4(),
-      komoditas: data.komoditas,
+      komoditas: data.komoditas.toUpperCase(),
       area_provinsi: data.provinsi,
       area_kota: data.kota,
       size: String(data.ukuran),
