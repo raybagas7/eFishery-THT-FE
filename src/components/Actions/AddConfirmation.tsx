@@ -7,13 +7,14 @@ import { RiCloseLine } from "react-icons/ri";
 import Button from "../ui/button";
 import { useRouter } from "next/router";
 import style from "./Confirmation.module.scss";
+import Ellipsis from "../ui/ellipsis";
 
 const AddConfirmation = ({ payload }: IAddConfirmation) => {
   const { hideModal } = useModal();
   const queryClient = useQueryClient();
   const router = useRouter();
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: (): Promise<{ status: number }> => fetchAddList([payload]),
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -42,10 +43,22 @@ const AddConfirmation = ({ payload }: IAddConfirmation) => {
         </p>
       </div>
       <div className={style.confirmation_buttons_box}>
-        <Button variant="destructive" onClick={hideModal}>
-          Batalkan
-        </Button>
-        <Button onClick={() => mutate()}>Lanjutkan</Button>
+        {isPending ? (
+          <Ellipsis />
+        ) : (
+          <>
+            <Button
+              variant="destructive"
+              onClick={hideModal}
+              disabled={isPending}
+            >
+              Batalkan
+            </Button>
+            <Button onClick={() => mutate()} disabled={isPending}>
+              Lanjutkan
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );
