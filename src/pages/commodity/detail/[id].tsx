@@ -2,11 +2,17 @@ import MainLayout from "@/components/Layout/MainLayout";
 import { IDetailCommodity } from "@/interfaces/components";
 import { GetServerSideProps } from "next";
 import React, { ReactElement } from "react";
+import style from "@/styles/index.module.scss";
+import CommodityDetail from "@/components/Container/CommodityDetail";
 
 const DetailCommodity = ({ commodityData }: IDetailCommodity) => {
   console.log(commodityData);
 
-  return <div>DetailCommodity</div>;
+  return (
+    <main className={style.main_container}>
+      <CommodityDetail commodityData={commodityData} />
+    </main>
+  );
 };
 
 export default DetailCommodity;
@@ -39,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
-      commodityData: commodity,
+      commodityData: commodity[0],
     },
   };
 };

@@ -6,14 +6,7 @@ const InputUi: FC<InputProps> = ({ icon, name, type, ...rest }) => {
   return (
     <div className={style.input_container}>
       <label htmlFor={name}> {name}</label>
-      <input
-        type={type}
-        id={name}
-        name={name}
-        className={style.input_box}
-        // value={value}
-        {...rest}
-      />
+      <input type={type} id={name} name={name} {...rest} />
       {icon}
     </div>
   );
