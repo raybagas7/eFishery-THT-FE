@@ -1,0 +1,48 @@
+@import "@/styles/index.module.scss";
+
+.linkContainer {
+  padding-left: 12px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  gap: 12px;
+  border-radius: 12px;
+  position: relative;
+  font-size: 12px;
+
+  .active_mark {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 5px;
+    border-radius: 0 10px;
+    background-color: $primary;
+  }
+
+  svg {
+    width: 20px;
+    height: auto;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .unactiveList {
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .activeList {
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-weight: 600;
+    color: $primary;
+  }
+}

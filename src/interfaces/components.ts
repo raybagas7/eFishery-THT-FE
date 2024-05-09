@@ -89,3 +89,11 @@ export interface ICommodityForm {
   commodityData?: Commodity;
   crud: "add" | "edit";
 }
+
+export interface IListNavigation {
+  name: string;
+  icon?: React.ReactNode;
+  isActive?: boolean;
+  to: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+}
