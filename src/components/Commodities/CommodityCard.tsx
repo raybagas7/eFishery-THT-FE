@@ -8,7 +8,6 @@ import { formatDate, formatIDR } from "@/libs/utils";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { motion } from "framer-motion";
 import CommodityDesktopCard from "./CommodityDesktopCard";
-import { GiDoubleFish } from "react-icons/gi";
 
 const CommodityCard = ({ commodityData, index, page }: ICommodityCard) => {
   const [hideDetail, setHideDetail] = useState<boolean | undefined>(false);
@@ -45,9 +44,8 @@ const CommodityCard = ({ commodityData, index, page }: ICommodityCard) => {
       <div className={style.commodity_box}>
         <div className={style.commodity_head}>
           <p>
-            {commodityData.komoditas} - <span>Ukuran {commodityData.size}</span>
+            {commodityData.komoditas} <span>(Ukuran {commodityData.size})</span>
           </p>
-          <GiDoubleFish />
         </div>
         <BsThreeDotsVertical
           className={style.commodity_option}
