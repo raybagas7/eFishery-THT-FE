@@ -33,9 +33,23 @@ const CommoditySearch = ({
               ...baseStyles,
               fontSize: "12px",
             }),
+            dropdownIndicator: (baseStyles) => ({
+              ...baseStyles,
+              cursor: "pointer",
+            }),
             input: (baseStyles) => ({
               ...baseStyles,
               fontSize: "12px",
+              cursor: "pointer",
+            }),
+            option: (baseStyles, state) => ({
+              ...baseStyles,
+              cursor: "pointer",
+              ":hover": {
+                backgroundColor: "#4dc7a8",
+              },
+              backgroundColor: state.isFocused ? "#4dc7a8" : "",
+              color: state.isFocused ? "white" : "black",
             }),
           }}
         />
