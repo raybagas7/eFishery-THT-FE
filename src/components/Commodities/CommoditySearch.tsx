@@ -4,6 +4,7 @@ import Button from "../ui/button";
 import { FaSearch } from "react-icons/fa";
 import style from "./CommoditySearch.module.scss";
 import { ICommoditySearch } from "@/interfaces/components";
+import SelectUi from "../ui/select-ui";
 
 const CommoditySearch = ({
   handleSearch,
@@ -13,6 +14,20 @@ const CommoditySearch = ({
 }: ICommoditySearch) => {
   return (
     <form className={style.search_box} onSubmit={handleSearchSubmit}>
+      <div className={style.select_wrapper}>
+        <SelectUi
+          styles={{
+            container: (baseStyles) => ({
+              ...baseStyles,
+              fontSize: "12px",
+            }),
+            input: (baseStyles) => ({
+              ...baseStyles,
+              fontSize: "12px",
+            }),
+          }}
+        />
+      </div>
       <div className={style.input_wrapper}>
         <InputUi
           id="search"

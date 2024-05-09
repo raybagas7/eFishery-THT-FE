@@ -1,10 +1,16 @@
 .search_box {
   display: flex;
-  width: 100%;
   align-items: center;
+  width: 100%;
   gap: 8px;
   margin-bottom: 10px;
+
+  .select_wrapper {
+    width: 200px;
+  }
+
   .input_wrapper {
+    margin-top: 4px;
     width: 100%;
   }
 
