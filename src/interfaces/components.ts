@@ -11,7 +11,7 @@ export interface IUserSellerLayout {
   children: React.ReactNode;
 }
 
-export interface IMobileNavigation {
+export interface ITopNavigation {
   toggleAside: () => void;
 }
 

@@ -1,13 +1,13 @@
 import React from "react";
-import style from "./MobileNavigation.module.scss";
+import style from "./TopNavigation.module.scss";
 import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IMobileNavigation } from "@/interfaces/components";
+import { ITopNavigation } from "@/interfaces/components";
 import Link from "next/link";
 
-const MobileNavigation = ({ toggleAside }: IMobileNavigation) => {
+const TopNavigation = ({ toggleAside }: ITopNavigation) => {
   return (
-    <div className={style.mobile_nav_container}>
+    <div className={style.top_nav_container}>
       <div className={style.box}>
         <Link href={"/"}>
           <Image
@@ -23,4 +23,4 @@ const MobileNavigation = ({ toggleAside }: IMobileNavigation) => {
   );
 };
 
-export default MobileNavigation;
+export default TopNavigation;
