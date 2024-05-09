@@ -8,3 +8,29 @@
     padding-left: 200px;
   }
 }
+
+.main_header_box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  margin-top: 20px;
+
+  a {
+    div {
+      padding: 6px;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      &:hover {
+        background-color: $primary;
+        color: white;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}

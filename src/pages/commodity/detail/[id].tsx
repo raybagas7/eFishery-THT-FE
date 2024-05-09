@@ -5,6 +5,8 @@ import React, { ReactElement } from "react";
 import style from "@/styles/index.module.scss";
 import CommodityDetail from "@/components/Container/CommodityDetail";
 import Head from "next/head";
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa";
 
 const DetailCommodity = ({ commodityData }: IDetailCommodity) => {
   return (
@@ -16,6 +18,14 @@ const DetailCommodity = ({ commodityData }: IDetailCommodity) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={style.main_container}>
+        <div className={style.main_header_box}>
+          <Link href={"/"}>
+            <div>
+              <FaArrowLeft />
+            </div>
+          </Link>
+          <h1>Detail Komoditas</h1>
+        </div>
         <CommodityDetail commodityData={commodityData} />
       </main>
     </>

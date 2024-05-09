@@ -6,6 +6,8 @@ import React, { ReactElement } from "react";
 import style from "@/styles/index.module.scss";
 import Modal from "@/components/ui/modal";
 import CommodityForm from "@/components/Forms/CommodityForm";
+import { FaArrowLeft } from "react-icons/fa";
+import Link from "next/link";
 
 const EditCommodity = ({ commodityData }: IDetailCommodity) => {
   return (
@@ -18,6 +20,14 @@ const EditCommodity = ({ commodityData }: IDetailCommodity) => {
       </Head>
       <Modal backDropClose />
       <main className={style.main_container}>
+        <div className={style.main_header_box}>
+          <Link href={"/"}>
+            <div>
+              <FaArrowLeft />
+            </div>
+          </Link>
+          <h1>Edit Komoditas</h1>
+        </div>
         <CommodityForm commodityData={commodityData} crud="edit" />
       </main>
     </>

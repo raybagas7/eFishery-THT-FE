@@ -94,7 +94,7 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
               <InputUi
                 type="text"
                 {...register("komoditas")}
-                value={field.value}
+                value={field.value ? field.value : undefined}
                 onChange={(e) => setValue("komoditas", e.target.value)}
               />
               {errors.komoditas && (
@@ -117,7 +117,7 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
                     evt.key,
                   ) && evt.preventDefault();
                 }}
-                value={field.value}
+                value={field.value ? field.value : undefined}
                 onChange={(e) => setValue("harga", parseInt(e.target.value))}
               />
               {errors.harga && <ErrorMessage message={errors.harga.message} />}

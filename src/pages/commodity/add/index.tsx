@@ -4,6 +4,8 @@ import style from "@/styles/index.module.scss";
 import Modal from "@/components/ui/modal";
 import CommodityForm from "@/components/Forms/CommodityForm";
 import Head from "next/head";
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa";
 
 const AddCommodity = () => {
   return (
@@ -16,6 +18,14 @@ const AddCommodity = () => {
       </Head>
       <Modal backDropClose />
       <main className={style.main_container}>
+        <div className={style.main_header_box}>
+          <Link href={"/"}>
+            <div>
+              <FaArrowLeft />
+            </div>
+          </Link>
+          <h1>Tambah Komoditas</h1>
+        </div>
         <CommodityForm crud="add" />
       </main>
     </>
