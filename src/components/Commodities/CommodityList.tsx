@@ -106,7 +106,7 @@ const CommodityList = () => {
                 )
               ) : (
                 <p className="py-5 text-[16px] font-[600] leading-6">
-                  {`You've hit the end of the page`}
+                  {`Kamu sudah mencapai batas akhir halaman`}
                 </p>
               ))) ??
               null}
