@@ -17,6 +17,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormData } from "@/types/alltypes";
 import { useModal } from "@/store/useModal";
 import EditConfirmation from "../Actions/EditConfirmation";
+import style from "./CommodityForm.module.scss";
 
 const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
   const { showModal } = useModal();
@@ -28,7 +29,7 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
     tanggal: z.date(),
     ukuran: z.number().min(1),
     provinsi: z.string().min(1),
-    kota: z.string().min(1),
+    kota: z.string().min(1, { message: "Pilih kota setelah provinsi" }),
   });
 
   const {
@@ -84,125 +85,150 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
   }, []);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Controller
-        control={control}
-        name="komoditas"
-        render={({ field }) => (
-          <InputUi
-            type="text"
-            {...register("komoditas")}
-            value={field.value}
-            onChange={(e) => setValue("komoditas", e.target.value)}
+    <form onSubmit={handleSubmit(onSubmit)} className={style.commodity_form}>
+      <div className={style.form_container}>
+        <Controller
+          control={control}
+          name="komoditas"
+          render={({ field }) => (
+            <div>
+              <InputUi
+                type="text"
+                {...register("komoditas")}
+                value={field.value}
+                onChange={(e) => setValue("komoditas", e.target.value)}
+              />
+              {errors.komoditas && (
+                <ErrorMessage message={errors.komoditas.message} />
+              )}
+            </div>
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="harga"
+          render={({ field }) => (
+            <div>
+              <InputUi
+                type="number"
+                {...register("harga")}
+                value={field.value}
+                onChange={(e) => setValue("harga", parseInt(e.target.value))}
+              />
+              {errors.harga && <ErrorMessage message={errors.harga.message} />}
+            </div>
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="ukuran"
+          render={({ field }) => (
+            <div>
+              <SelectUi
+                {...register("ukuran")}
+                options={optionSize}
+                onChange={(e) =>
+                  e && setValue("ukuran", parseInt(e.value as string))
+                }
+                value={{
+                  value: crud === "edit" ? String(field.value) : field.value,
+                  label: crud === "edit" ? String(field.value) : field.value,
+                }}
+                isLoading={sizeLoading}
+                placeholder={sizeLoading ? "Loading" : "Pilih ukuran"}
+              />
+              {errors.ukuran && (
+                <ErrorMessage message={errors.ukuran.message} />
+              )}
+            </div>
+          )}
+        />
+
+        <div className={style.area_box}>
+          <Controller
+            control={control}
+            name="provinsi"
+            render={({ field }) => (
+              <div>
+                <SelectUi
+                  {...register("provinsi")}
+                  options={optionArea?.province}
+                  onChange={(e) => {
+                    e && setValue("provinsi", e.value as string);
+                    e && setProvince(e.value as string);
+                    e && setValue("kota", "");
+                  }}
+                  value={{ value: field.value, label: field.value }}
+                  isLoading={sizeArea}
+                  placeholder={sizeArea ? "Loading" : "Pilih provinsi"}
+                />
+                {errors.provinsi && (
+                  <ErrorMessage message={errors.provinsi.message} />
+                )}
+              </div>
+            )}
           />
-        )}
-      />
-      {errors.komoditas && <ErrorMessage message={errors.komoditas.message} />}
 
-      <Controller
-        control={control}
-        name="harga"
-        render={({ field }) => (
-          <InputUi
-            type="number"
-            {...register("harga")}
-            value={field.value}
-            onChange={(e) => setValue("harga", parseInt(e.target.value))}
+          <Controller
+            control={control}
+            name="kota"
+            render={({ field }) => (
+              <div>
+                <SelectUi
+                  {...register("kota")}
+                  options={
+                    selectedProvince
+                      ? optionArea?.areaData[`${selectedProvince}`].cities
+                      : undefined
+                  }
+                  isLoading={sizeArea}
+                  onChange={(e) => {
+                    e && setValue("kota", e.value as string);
+                  }}
+                  value={{
+                    value: field.value ? field.value : null,
+                    label: field.value ? field.value : null,
+                  }}
+                  placeholder={sizeArea ? "Loading" : "Pilih Kota"}
+                />
+                {errors.kota && <ErrorMessage message={errors.kota.message} />}
+              </div>
+            )}
           />
-        )}
-      />
-      {errors.harga && <ErrorMessage message={errors.harga.message} />}
+        </div>
 
-      <Controller
-        control={control}
-        name="tanggal"
-        render={({ field }) => (
-          <DatePicker
-            name={field.name}
-            showMonthDropdown
-            showYearDropdown
-            scrollableYearDropdown
-            selected={field.value}
-            onChange={(date) => field.onChange(date)}
-            customInput={<CalendarButton />}
-            withPortal
-            yearDropdownItemNumber={50}
+        <div className={style.date_box}>
+          <Controller
+            control={control}
+            name="tanggal"
+            render={({ field }) => (
+              <div>
+                <DatePicker
+                  name={field.name}
+                  showMonthDropdown
+                  showYearDropdown
+                  scrollableYearDropdown
+                  selected={field.value}
+                  onChange={(date) => field.onChange(date)}
+                  customInput={<CalendarButton />}
+                  withPortal
+                  yearDropdownItemNumber={50}
+                />
+                {errors.tanggal && (
+                  <ErrorMessage message={errors.tanggal.message} />
+                )}
+              </div>
+            )}
           />
-        )}
-      />
-      {errors.tanggal && <ErrorMessage message={errors.tanggal.message} />}
+        </div>
 
-      <Controller
-        control={control}
-        name="ukuran"
-        render={({ field }) => (
-          <SelectUi
-            {...register("ukuran")}
-            options={optionSize}
-            onChange={(e) =>
-              e && setValue("ukuran", parseInt(e.value as string))
-            }
-            value={{
-              value: crud === "edit" ? String(field.value) : field.value,
-              label: crud === "edit" ? String(field.value) : field.value,
-            }}
-            isLoading={sizeLoading}
-            placeholder={sizeLoading ? "Loading" : "Pilih ukuran"}
-          />
-        )}
-      />
-      {errors.ukuran && <ErrorMessage message={errors.ukuran.message} />}
-
-      <Controller
-        control={control}
-        name="provinsi"
-        render={({ field }) => (
-          <SelectUi
-            {...register("provinsi")}
-            options={optionArea?.province}
-            onChange={(e) => {
-              e && setValue("provinsi", e.value as string);
-              e && setProvince(e.value as string);
-              e && setValue("kota", "");
-            }}
-            value={{ value: field.value, label: field.value }}
-            isLoading={sizeArea}
-            placeholder={sizeArea ? "Loading" : "Pilih provinsi"}
-          />
-        )}
-      />
-      {errors.provinsi && <ErrorMessage message={errors.provinsi.message} />}
-
-      <Controller
-        control={control}
-        name="kota"
-        render={({ field }) => (
-          <SelectUi
-            {...register("kota")}
-            options={
-              selectedProvince
-                ? optionArea?.areaData[`${selectedProvince}`].cities
-                : undefined
-            }
-            isLoading={sizeArea}
-            onChange={(e) => {
-              e && setValue("kota", e.value as string);
-            }}
-            value={{
-              value: field.value ? field.value : null,
-              label: field.value ? field.value : null,
-            }}
-            placeholder={sizeArea ? "Loading" : "Pilih Kota"}
-          />
-        )}
-      />
-
-      {errors.kota && <ErrorMessage message={errors.kota.message} />}
-
-      <div>
-        <Button type="submit">
-          {crud === "edit" ? "Edit Commodity" : "Add Commodity"}
-        </Button>
+        <div className={style.submit_button_box}>
+          <Button type="submit">
+            {crud === "edit" ? "Edit Commodity" : "Add Commodity"}
+          </Button>
+        </div>
       </div>
     </form>
   );

@@ -19,7 +19,7 @@ const CalendarButton = forwardRef<HTMLButtonElement, CustomInputProps>(
         onClick={onClick}
         ref={ref}
       >
-        {value || "Select date"}
+        {value || "Pilih tanggal"}
         <FaCalendarAlt />
       </button>
     </div>

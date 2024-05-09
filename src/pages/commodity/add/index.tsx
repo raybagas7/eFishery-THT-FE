@@ -5,17 +5,12 @@ import Modal from "@/components/ui/modal";
 import CommodityForm from "@/components/Forms/CommodityForm";
 
 const AddCommodity = () => {
-  // const options = [
-  //   { value: "chocolate", label: "Chocolate" },
-  //   { value: "strawberry", label: "Strawberry" },
-  //   { value: "vanilla", label: "Vanilla" },
-  // ];
   return (
     <>
       <Modal backDropClose />
-      <div className={style.main_container}>
+      <main className={style.main_container}>
         <CommodityForm crud="add" />
-      </div>
+      </main>
     </>
   );
 };
