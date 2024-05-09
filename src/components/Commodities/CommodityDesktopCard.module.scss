@@ -1,0 +1,46 @@
+@import "@/styles/index.module.scss";
+
+.list_card_desktop {
+  display: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+
+  @include media(">tablet") {
+    display: flex;
+  }
+
+  .list_number_wrapper {
+    display: flex;
+    width: auto;
+    min-width: 44px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .list_commodity_value {
+    flex: 1 1 0%;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    align-items: center;
+    text-align: left;
+
+    div {
+      padding: 12px 12px;
+    }
+
+    p {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  .action_option {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 14px;
+  }
+}

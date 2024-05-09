@@ -20,8 +20,8 @@ export interface IDetailCommodity {
 }
 
 export interface ICommodityCard extends IDetailCommodity {
-  index?: number;
-  page?: number;
+  index: number;
+  page: number;
 }
 
 export interface IPopUpActionContent {
@@ -104,4 +104,9 @@ export interface ICommoditySearch {
   search: string;
   handleSearchSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   disabled?: boolean;
+}
+
+export interface ICommodityDesktopCard extends IDetailCommodity {
+  index: number;
+  page: number;
 }

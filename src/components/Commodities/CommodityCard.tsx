@@ -7,8 +7,9 @@ import PopUpActionContent from "../Actions/PopUpActionContent";
 import { formatDate, formatIDR } from "@/libs/utils";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { motion } from "framer-motion";
+import CommodityDesktopCard from "./CommodityDesktopCard";
 
-const CommodityCard = ({ commodityData }: ICommodityCard) => {
+const CommodityCard = ({ commodityData, index, page }: ICommodityCard) => {
   const [hideDetail, setHideDetail] = useState<boolean | undefined>(false);
   const { showPopup } = usePopup();
 
@@ -35,6 +36,11 @@ const CommodityCard = ({ commodityData }: ICommodityCard) => {
 
   return (
     <li className={style.list_card}>
+      <CommodityDesktopCard
+        commodityData={commodityData}
+        index={index}
+        page={page}
+      />
       <div className={style.commodity_box}>
         <div className={style.commodity_head}>
           <p>

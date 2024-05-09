@@ -9,6 +9,7 @@ import Ellipsis from "../ui/ellipsis";
 import CommoditySearch from "./CommoditySearch";
 import CommodityEmpty from "./CommodityEmpty";
 import { IoMdAdd } from "react-icons/io";
+import CommodityTitle from "./CommodityTitle";
 
 const CommodityList = () => {
   const [search, setSearch] = useState("");
@@ -57,6 +58,7 @@ const CommodityList = () => {
         handleSearchSubmit={handleSearchSubmit}
         disabled={isPending || isFetching}
       />
+      <CommodityTitle />
       {isPending && !data ? (
         <div className={style.spinner_box}>
           <Spinner />
@@ -64,13 +66,15 @@ const CommodityList = () => {
       ) : (
         <div className={style.commodities_contaier}>
           {data.pages[0].data.length > 0 ? (
-            data.pages.map((page) => {
+            data.pages.map((page, pageIndex) => {
               return (
                 <ul key={page.currentPage}>
                   {page?.data?.map(
-                    (commodity) =>
+                    (commodity, index) =>
                       commodity.uuid && (
                         <CommodityCard
+                          index={index}
+                          page={pageIndex}
                           commodityData={commodity}
                           key={commodity.uuid}
                         />

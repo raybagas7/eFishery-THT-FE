@@ -4,10 +4,19 @@
   border-bottom: 1px solid $primary;
   padding: 12px;
   font-size: 14px;
+
+  @include media(">tablet") {
+    padding: 0;
+  }
+
   .commodity_box {
     padding-bottom: 0;
     display: flex;
     justify-content: space-between;
+
+    @include media(">tablet") {
+      display: none;
+    }
 
     .commodity_head {
       p {
@@ -34,6 +43,10 @@
     font-weight: 600;
     cursor: pointer;
 
+    @include media(">tablet") {
+      display: none;
+    }
+
     &:hover > div {
       color: $primary;
     }
@@ -54,6 +67,10 @@
     flex-direction: column;
     gap: 12px;
     overflow: hidden;
+
+    @include media(">tablet") {
+      display: none;
+    }
 
     div {
       display: flex;
