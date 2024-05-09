@@ -15,3 +15,13 @@ export function formatDate(date: Date, typeMonth?: "long" | "short"): string {
   }
   return `${noCommaDay} ${month} ${year}`;
 }
+
+export function formatIDR(number: number) {
+  const formatter = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0,
+  });
+
+  return formatter.format(number);
+}
