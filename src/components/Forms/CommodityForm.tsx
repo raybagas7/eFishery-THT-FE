@@ -112,6 +112,11 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
               <InputUi
                 type="number"
                 {...register("harga")}
+                onKeyDown={(evt) => {
+                  ["e", "E", "+", "-", ".", "ArrowUp", "ArrowDown"].includes(
+                    evt.key,
+                  ) && evt.preventDefault();
+                }}
                 value={field.value}
                 onChange={(e) => setValue("harga", parseInt(e.target.value))}
               />
