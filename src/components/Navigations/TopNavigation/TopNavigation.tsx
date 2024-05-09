@@ -12,8 +12,8 @@ const TopNavigation = ({ toggleAside }: ITopNavigation) => {
         <Link href={"/"}>
           <Image
             src={"/icon-192x192.png"}
-            width={50}
-            height={50}
+            width={36}
+            height={36}
             alt="eFishery Icon"
           />
         </Link>
