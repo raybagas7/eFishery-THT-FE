@@ -10,5 +10,29 @@
 
   @include media(">tablet") {
     display: block;
+
+    .desktop_nav_box {
+      position: relative;
+      height: 100%;
+      width: 200px !important;
+      border-right: $border solid 1px;
+      background-color: $primaryBg;
+      padding-top: 48px;
+
+      .banner_box {
+        padding: 0 12px;
+        display: flex;
+        justify-content: center;
+
+        img {
+          width: auto;
+          height: 30px;
+        }
+      }
+
+      .navigation {
+        background-color: cyan;
+      }
+    }
   }
 }
