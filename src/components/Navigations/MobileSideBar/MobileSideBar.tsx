@@ -7,6 +7,7 @@ import { FiShare } from "react-icons/fi";
 import { BiPlug } from "react-icons/bi";
 import { FaFish, FaShrimp } from "react-icons/fa6";
 import TopNavigation from "../TopNavigation/TopNavigation";
+import Link from "next/link";
 
 const MobileSideBar = () => {
   const [asideHide, setAsideHide] = useState<boolean | undefined>();
@@ -70,12 +71,14 @@ const MobileSideBar = () => {
           onClick={(e) => e.stopPropagation()}
           className={style.mobile_sidebar_container}
         >
-          <Image
-            src={"/efishery.png"}
-            width={200}
-            height={50}
-            alt="efish_banner"
-          />
+          <Link href={"/"}>
+            <Image
+              src={"/efishery.png"}
+              width={200}
+              height={50}
+              alt="efish_banner"
+            />
+          </Link>
           <nav className={style.navigation}>
             <ul>
               <ListNavigation
