@@ -11,11 +11,23 @@ const CommoditySearch = ({
   search,
   handleSearchSubmit,
   disabled,
+  handleSelect,
 }: ICommoditySearch) => {
+  const options = [
+    { value: "komoditas", label: "Komoditas" },
+    { value: "area_provinsi", label: "Provinsi" },
+    { value: "area_kota", label: "Kota" },
+    { value: "size", label: "Ukuran" },
+    { value: "price", label: "Harga" },
+  ];
   return (
     <form className={style.search_box} onSubmit={handleSearchSubmit}>
       <div className={style.select_wrapper}>
         <SelectUi
+          isDisabled={disabled}
+          options={options}
+          onChange={(e) => handleSelect(e?.value as string)}
+          defaultValue={{ value: "komoditas", label: "Komoditas" }}
           styles={{
             container: (baseStyles) => ({
               ...baseStyles,
@@ -46,7 +58,7 @@ const CommoditySearch = ({
           type="submit"
         >
           <div className={style.button_child}>
-            Search
+            Cari
             <FaSearch />
           </div>
         </Button>

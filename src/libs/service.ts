@@ -7,9 +7,11 @@ import { Commodity, ProvinceObject } from "@/types/alltypes";
 export async function fetchCommodities({
   pageParam,
   search,
+  key,
 }: {
   pageParam: number;
   search: string;
+  key: string;
 }): Promise<{
   data: Commodity[];
   currentPage: number;
@@ -17,7 +19,7 @@ export async function fetchCommodities({
 }> {
   try {
     const response = await fetch(
-      `${process.env.BASE_API_URL}/list?limit=10&offset=${pageParam * 10}${search ? `&search={"komoditas":"${search}"}` : ""}`,
+      `${process.env.BASE_API_URL}/list?limit=10&offset=${pageParam * 10}${search ? `&search={"${key}":"${search}"}` : ""}`,
     );
 
     if (!response.ok) {

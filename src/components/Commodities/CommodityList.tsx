@@ -13,9 +13,11 @@ import CommodityTitle from "./CommodityTitle";
 
 const CommodityList = () => {
   const [search, setSearch] = useState("");
+  const [select, setSelect] = useState("komoditas");
+  const [key, setKey] = useState("");
   const [query, setQuery] = useState("");
   const { isPending, isError, data, isFetching, fetchNextPage, hasNextPage } =
-    useCommodityList(query);
+    useCommodityList(key, query);
 
   const handleLoadMore = () => {
     fetchNextPage();
@@ -25,9 +27,15 @@ const CommodityList = () => {
     setSearch(event.target.value);
   };
 
+  const handleSelect = (value: string) => {
+    console.log(value);
+    setSelect(value);
+  };
+
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setQuery(search.toUpperCase());
+    setKey(select);
   };
 
   if (isError) {
@@ -57,6 +65,8 @@ const CommodityList = () => {
         handleSearch={handleSearch}
         handleSearchSubmit={handleSearchSubmit}
         disabled={isPending || isFetching}
+        handleSelect={handleSelect}
+        select={select}
       />
       <CommodityTitle />
       {isPending && !data ? (

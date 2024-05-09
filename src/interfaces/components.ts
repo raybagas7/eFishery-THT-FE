@@ -104,7 +104,9 @@ export interface IListNavigation {
 export interface ICommoditySearch {
   handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   search: string;
+  select: string;
   handleSearchSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleSelect: (value: string) => void;
   disabled?: boolean;
 }
 
