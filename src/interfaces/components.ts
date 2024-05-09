@@ -60,3 +60,12 @@ export interface IAddCommodityPayload {
   tgl_parsed: string;
   timestamp: string;
 }
+
+export interface IModalProps {
+  backDropClose?: boolean;
+  component?: React.ReactNode;
+}
+
+export interface IAddConfirmation {
+  payload: IAddCommodityPayload;
+}

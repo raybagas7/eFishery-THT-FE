@@ -1,22 +1,24 @@
 import "react-datepicker/dist/react-datepicker.css";
-import React, { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import Button from "../ui/button";
 import InputUi from "../ui/input-ui";
 import SelectUi from "../ui/select-ui";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAddList, fetchArea, fetchSize } from "@/libs/service";
-import { z, ZodType } from "zod";
-import { useForm, Controller } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Button from "../ui/button";
-import DatePicker from "react-datepicker";
-import CalendarButton from "../ui/calendar-button";
 import ErrorMessage from "../ui/error-msg";
-import { formatDate } from "@/libs/utils";
-import { FormData } from "@/types/alltypes";
+import CalendarButton from "../ui/calendar-button";
+import AddConfirmation from "../Actions/AddConfirmation";
+import DatePicker from "react-datepicker";
+import React, { useEffect, useState } from "react";
+import { z, ZodType } from "zod";
 import { IAddCommodityPayload } from "@/interfaces/components";
-import { v4 as uuidv4 } from "uuid";
+import { fetchArea, fetchSize } from "@/libs/service";
+import { useForm, Controller } from "react-hook-form";
+import { useQuery } from "@tanstack/react-query";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormData } from "@/types/alltypes";
+import { useModal } from "@/store/useModal";
 
 const AddCommodityForm = () => {
+  const { showModal } = useModal();
   const [selectedProvince, setProvince] = useState<string>();
   const [selectedCity, setCity] = useState<string | null>(null);
 
@@ -49,11 +51,7 @@ const AddCommodityForm = () => {
     queryFn: fetchArea,
   });
 
-  console.log(errors);
-
   const onSubmit = (data: FormData) => {
-    console.log("IT WORKED", data);
-    console.log(formatDate(data.tanggal, "long"));
     const payload: IAddCommodityPayload = {
       uuid: uuidv4(),
       komoditas: data.komoditas,
@@ -65,7 +63,8 @@ const AddCommodityForm = () => {
       timestamp: String(data.tanggal.getTime()),
     };
 
-    fetchAddList([payload]);
+    console.log(payload);
+    showModal(<AddConfirmation payload={payload} />);
   };
 
   useEffect(() => {

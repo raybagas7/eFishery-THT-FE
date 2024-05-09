@@ -34,7 +34,7 @@ export async function fetchCommodities({
 
 export const useCommodityList = () => {
   const commodityList = useInfiniteQuery({
-    queryKey: ["list-commodities"],
+    queryKey: ["commodities"],
     queryFn: fetchCommodities,
     initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage.nextPage,

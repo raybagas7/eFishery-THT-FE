@@ -23,7 +23,6 @@ const PopUp = ({ component, backDropClose }: IPopUpMobile) => {
     <motion.div
       animate={{ opacity: [0, 1] }}
       transition={{ duration: 0.3 }}
-      data-testid="dayatani-popup"
       onClick={backDropClose ? hidePopup : () => {}}
       className={style.popup_backdrop}
     >
