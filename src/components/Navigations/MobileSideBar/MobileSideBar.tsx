@@ -3,9 +3,18 @@ import MobileNavigation from "../MobileNavigation/MobileNavigation";
 import style from "./MobileSideBar.module.scss";
 import { motion, useAnimationControls } from "framer-motion";
 import Image from "next/image";
+import ListNavigation from "../ListNavigation/ListNavigation";
+import { FiShare } from "react-icons/fi";
+import { BiPlug } from "react-icons/bi";
+import { FaFish, FaShrimp } from "react-icons/fa6";
 
 const MobileSideBar = () => {
   const [asideHide, setAsideHide] = useState<boolean | undefined>();
+  const [activePage, setActivePage] = useState<string>("list");
+  const onChangeNav = async (path: string) => {
+    setActivePage(path);
+    setAsideHide(false);
+  };
 
   const containerVariants = {
     close: {
@@ -67,6 +76,45 @@ const MobileSideBar = () => {
             height={50}
             alt="efish_banner"
           />
+          <nav className={style.navigation}>
+            <ul>
+              <ListNavigation
+                name="Commodity list"
+                to="/"
+                icon={<FiShare />}
+                onClick={() => onChangeNav("list")}
+                isActive={activePage === "list"}
+              />
+              <ListNavigation
+                name="Add Commodity"
+                to="/commodity/add"
+                icon={<BiPlug />}
+                onClick={() => onChangeNav("add")}
+                isActive={activePage === "add"}
+              />
+              <ListNavigation
+                name="Shrim"
+                to="/"
+                icon={<FaShrimp />}
+                onClick={() => onChangeNav("edit")}
+                isActive={activePage === "edit"}
+              />
+              <ListNavigation
+                name="Fish"
+                to="/"
+                icon={<FaFish />}
+                onClick={() => onChangeNav("fish")}
+                isActive={activePage === "fish"}
+              />
+              <ListNavigation
+                name="eFresh"
+                to="/"
+                icon={<FaFish />}
+                onClick={() => onChangeNav("efresh")}
+                isActive={activePage === "efresh"}
+              />
+            </ul>
+          </nav>
         </motion.div>
       </motion.div>
     </>
