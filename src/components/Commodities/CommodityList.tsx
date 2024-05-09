@@ -6,6 +6,8 @@ import Button from "../ui/button";
 import CommodityCard from "./CommodityCard";
 import Link from "next/link";
 import { RiFilter2Line, RiUserAddLine } from "react-icons/ri";
+import Spinner from "../ui/spinner";
+import Ellipsis from "../ui/ellipsis";
 
 const CommodityList = () => {
   const { isPending, isError, data, isFetching, fetchNextPage, hasNextPage } =
@@ -17,8 +19,8 @@ const CommodityList = () => {
 
   if (isPending && !data) {
     return (
-      <div>
-        <p>PENDING</p>
+      <div className={style.spinner_box}>
+        <Spinner />
       </div>
     );
   }
@@ -66,9 +68,15 @@ const CommodityList = () => {
           {(data.pages[0].data.length > 0 &&
             (hasNextPage &&
             data.pages[data.pages.length - 1].data.length > 9 ? (
-              <Button onClick={handleLoadMore} variant="outline" size="small">
-                {isFetching ? "Loading..." : "Load More"}
-              </Button>
+              isFetching ? (
+                <div className={style.loading_box}>
+                  <Ellipsis />
+                </div>
+              ) : (
+                <Button onClick={handleLoadMore} variant="outline" size="small">
+                  Load More
+                </Button>
+              )
             ) : (
               <p className="py-5 text-[16px] font-[600] leading-6">
                 {`You've hit the end of the page`}

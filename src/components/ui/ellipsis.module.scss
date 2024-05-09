@@ -1,0 +1,46 @@
+@import "@/styles/index.module.scss";
+
+.dot_windmill {
+  position: relative;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: $primary;
+  color: $primary;
+  transform-origin: 5px 15px;
+  animation: dot_windmill 2s infinite linear;
+}
+.dot_windmill::before,
+.dot_windmill::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+}
+.dot_windmill::before {
+  left: -8.66254px;
+  top: 15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: $primary;
+  color: $primary;
+}
+.dot_windmill::after {
+  left: 8.66254px;
+  top: 15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: $primary;
+  color: $primary;
+}
+
+@keyframes dot_windmill {
+  0% {
+    transform: rotateZ(0deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotateZ(720deg) translate3d(0, 0, 0);
+  }
+}
