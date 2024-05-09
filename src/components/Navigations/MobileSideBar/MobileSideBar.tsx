@@ -3,11 +3,12 @@ import style from "./MobileSideBar.module.scss";
 import { motion, useAnimationControls } from "framer-motion";
 import Image from "next/image";
 import ListNavigation from "../ListNavigation/ListNavigation";
-import { FiShare } from "react-icons/fi";
-import { BiPlug } from "react-icons/bi";
+import { BiPlus } from "react-icons/bi";
 import { FaFish, FaShrimp } from "react-icons/fa6";
 import TopNavigation from "../TopNavigation/TopNavigation";
 import Link from "next/link";
+import { RiListOrdered } from "react-icons/ri";
+import { SiCodefresh } from "react-icons/si";
 
 const MobileSideBar = () => {
   const [asideHide, setAsideHide] = useState<boolean | undefined>();
@@ -84,14 +85,14 @@ const MobileSideBar = () => {
               <ListNavigation
                 name="List Komoditas"
                 to="/"
-                icon={<FiShare />}
+                icon={<RiListOrdered />}
                 onClick={() => onChangeNav("list")}
                 isActive={activePage === "list"}
               />
               <ListNavigation
                 name="Tambah Komoditas"
                 to="/commodity/add"
-                icon={<BiPlug />}
+                icon={<BiPlus />}
                 onClick={() => onChangeNav("add")}
                 isActive={activePage === "add"}
               />
@@ -112,7 +113,7 @@ const MobileSideBar = () => {
               <ListNavigation
                 name="eFresh"
                 to="/"
-                icon={<FaFish />}
+                icon={<SiCodefresh />}
                 onClick={() => onChangeNav("efresh")}
                 isActive={activePage === "efresh"}
               />
