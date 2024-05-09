@@ -2,7 +2,7 @@
 
 .commodity_form {
   padding: 16px;
-  max-width: 600px;
+  max-width: 768px;
 
   .form_container {
     padding: 20px 15px;
@@ -30,13 +30,37 @@
   .date_box {
     display: flex;
     flex-direction: row-reverse;
-    border-bottom: $border solid 1px;
     padding-bottom: 12px;
+    border: none;
+
+    @include media(">tablet") {
+      border-bottom: $border solid 1px;
+    }
   }
 
   .submit_button_box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     display: flex;
-    margin-top: 10px;
     justify-content: center;
+    padding: 20px 0;
+    border-top: $border solid 1px;
+    button {
+      width: 80%;
+    }
+
+    @include media(">tablet") {
+      border: none;
+      position: static;
+      display: flex;
+      margin-top: 10px;
+      justify-content: end;
+      padding: 0;
+      button {
+        width: fit-content;
+      }
+    }
   }
 }
