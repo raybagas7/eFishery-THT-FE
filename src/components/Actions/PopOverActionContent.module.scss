@@ -1,0 +1,37 @@
+@import "@/styles/index.module.scss";
+
+.popover_content_container {
+  background-color: $primaryBg;
+  overflow: hidden;
+  border-radius: 12px;
+  font-size: 12px;
+  box-shadow:
+    0 1px 3px 0 rgba(12, 12, 12, 0.25),
+    0 1px 2px -1px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+
+  div {
+    width: 76px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 8px;
+    font-weight: 600;
+    &:hover {
+      background-color: $primary;
+      color: white;
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .edit_box {
+    border-top: $border solid 1px;
+    border-bottom: $border solid 1px;
+  }
+}

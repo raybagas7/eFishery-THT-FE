@@ -42,5 +42,20 @@
     justify-content: center;
     align-items: center;
     padding-right: 14px;
+
+    .commodity_option {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 50%;
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+      &:hover {
+        background-color: #4dc7a270;
+      }
+    }
   }
 }

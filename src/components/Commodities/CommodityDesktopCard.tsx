@@ -1,14 +1,24 @@
 import { ICommodityDesktopCard } from "@/interfaces/components";
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import style from "./CommodityDesktopCard.module.scss";
 import { formatDate, formatIDR } from "@/libs/utils";
+import { Popover } from "react-tiny-popover";
+import PopOverActionContent from "../Actions/PopOverActionContent";
 
 const CommodityDesktopCard = ({
   commodityData,
   index,
   page,
 }: ICommodityDesktopCard) => {
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
+  console.log(isPopoverOpen);
+
+  const togglePopover = useCallback(() => {
+    setIsPopoverOpen((prev) => !prev);
+  }, []);
+
   return (
     <div className={style.list_card_desktop}>
       <div className={style.list_number_wrapper}>
@@ -26,9 +36,11 @@ const CommodityDesktopCard = ({
         <div>
           <p>{commodityData.area_kota ? commodityData.area_kota : "-"}</p>
         </div>
-        <div>
+
+        <div onClick={() => setIsPopoverOpen((prev) => !prev)}>
           <p>{commodityData.size}</p>
         </div>
+
         <div>
           <p>{formatDate(new Date(commodityData.tgl_parsed), "short")}</p>
         </div>
@@ -37,10 +49,17 @@ const CommodityDesktopCard = ({
         </div>
       </div>
       <div className={style.action_option}>
-        <BsThreeDotsVertical
-          className={style.commodity_option}
-          //   onClick={onOptionClick}
-        />
+        <Popover
+          isOpen={isPopoverOpen}
+          reposition={false}
+          onClickOutside={() => setIsPopoverOpen(false)}
+          content={<PopOverActionContent commodityData={commodityData} />}
+          positions={["left"]}
+        >
+          <div onClick={togglePopover} className={style.commodity_option}>
+            <BsThreeDotsVertical />
+          </div>
+        </Popover>
       </div>
     </div>
   );
