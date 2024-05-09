@@ -26,7 +26,7 @@ const CommodityList = () => {
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setQuery(search);
+    setQuery(search.toUpperCase());
   };
 
   if ((isPending && !data) || isFetching) {
@@ -62,6 +62,7 @@ const CommodityList = () => {
       <form className={style.search_box} onSubmit={handleSearchSubmit}>
         <div className={style.input_wrapper}>
           <InputUi
+            id="search"
             placeholder="Cari komoditas"
             variant="small"
             value={search}
