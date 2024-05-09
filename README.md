@@ -80,16 +80,12 @@ To build and start the application you can run this command
 
 ## Installing the PWA on your Device
 
-- To install the Progressive Web App (PWA) on your device, follow these steps:
+To install the Progressive Web App (PWA) on your device, follow these steps:
 
-  1. Open the application in your web browser.
-  2. If the browser supports PWAs, you should see an option to "Install" or "Add to Home Screen. (Works on phone)" Click on this option.
-  3. Follow the prompts to install the PWA on your device's home screen / setup installer.
-  4. Once installed, you can launch the PWA directly from your device's home screen or shortcut from your desktop, just like any other app.
-
-**Note**: The availability of the "Install" or "Add to Home Screen" option may vary depending on the browser and device you are using.
-
-By following these steps, users will be able to install this application on their devices for easy access and a more app-like experience.
+- Open the application in your web browser.
+- If the browser supports PWAs, you should see an option to "Install" or "Add to Home Screen. (Works on phone)" Click on this option.
+- Follow the prompts to install the PWA on your device's home screen / setup installer.
+- Once installed, you can launch the PWA directly from your device's home screen or shortcut from your desktop, just like any other app.
 
 **Note**: The availability of the "Install" or "Add to Home Screen" option may vary depending on the browser and device you are using.
 
