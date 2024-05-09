@@ -3,6 +3,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { IUserSellerLayout } from "@/interfaces/components";
 import style from "./MainLayout.module.scss";
 import DesktopNavigation from "../Navigations/DesktopNavigation/DesktopNavigation";
+import { toastConfig } from "react-simple-toasts";
+
+toastConfig({
+  position: "top-center",
+});
 
 function MainLayout({ children }: IUserSellerLayout) {
   const queryClient = new QueryClient({

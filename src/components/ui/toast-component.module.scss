@@ -1,0 +1,41 @@
+@import "@/styles/index.module.scss";
+
+.toast_success {
+  border-radius: 12px;
+  padding: 12px 24px;
+  max-width: 80dvw;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.25),
+    0 1px 2px -1px rgba(0, 0, 0, 0.25);
+  border: $primary solid 1px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+
+  svg {
+    width: 32px;
+    height: 32px;
+    color: $primary;
+  }
+}
+
+.toast_error {
+  border-radius: 12px;
+  padding: 12px 24px;
+  max-width: 80dvw;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.25),
+    0 1px 2px -1px rgba(0, 0, 0, 0.25);
+  border: $error solid 1px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+
+  svg {
+    width: 32px;
+    height: 32px;
+    color: $error;
+  }
+}

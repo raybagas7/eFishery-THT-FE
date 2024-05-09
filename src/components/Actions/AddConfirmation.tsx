@@ -8,6 +8,8 @@ import Button from "../ui/button";
 import { useRouter } from "next/router";
 import style from "./Confirmation.module.scss";
 import Ellipsis from "../ui/ellipsis";
+import ToastComponent from "../ui/toast-component";
+import toast from "react-simple-toasts";
 
 const AddConfirmation = ({ payload }: IAddConfirmation) => {
   const { hideModal } = useModal();
@@ -22,10 +24,22 @@ const AddConfirmation = ({ payload }: IAddConfirmation) => {
       });
 
       hideModal();
+      toast(
+        <ToastComponent
+          variant="success"
+          message="Berhasil menambahkan data komoditas baru!"
+        />,
+      );
       router.push("/");
     },
 
     onError: () => {
+      toast(
+        <ToastComponent
+          variant="error"
+          message="Gagal menambahkan data komoditas baru"
+        />,
+      );
       hideModal();
     },
   });

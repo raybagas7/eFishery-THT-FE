@@ -8,6 +8,8 @@ import Button from "../ui/button";
 import { useRouter } from "next/router";
 import style from "./Confirmation.module.scss";
 import Ellipsis from "../ui/ellipsis";
+import ToastComponent from "../ui/toast-component";
+import toast from "react-simple-toasts";
 
 const DeleteConfirmation = ({ payload }: IDeleteConfirmation) => {
   const { hideModal } = useModal();
@@ -22,10 +24,22 @@ const DeleteConfirmation = ({ payload }: IDeleteConfirmation) => {
       });
 
       hideModal();
+      toast(
+        <ToastComponent
+          variant="success"
+          message="Berhasil menghapus data komoditas!"
+        />,
+      );
       router.push("/");
     },
 
     onError: () => {
+      toast(
+        <ToastComponent
+          variant="error"
+          message="Gagal menghapus data komoditas"
+        />,
+      );
       hideModal();
     },
   });

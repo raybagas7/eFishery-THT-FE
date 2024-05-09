@@ -6,6 +6,7 @@ import { ReactElement } from "react";
 import PopUp from "@/components/ui/popup";
 import Modal from "@/components/ui/modal";
 
+
 export default function Home() {
   return (
     <>

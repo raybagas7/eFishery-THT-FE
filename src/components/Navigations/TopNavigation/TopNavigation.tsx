@@ -17,6 +17,7 @@ const TopNavigation = ({ toggleAside }: ITopNavigation) => {
             alt="eFishery Icon"
           />
         </Link>
+
         <GiHamburgerMenu onClick={toggleAside} className={style.hamburger} />
       </div>
     </div>
