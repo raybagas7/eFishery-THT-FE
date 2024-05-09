@@ -8,6 +8,7 @@ import { RiFilter2Line, RiUserAddLine } from "react-icons/ri";
 import Spinner from "../ui/spinner";
 import Ellipsis from "../ui/ellipsis";
 import CommoditySearch from "./CommoditySearch";
+import CommodityEmpty from "./CommodityEmpty";
 
 const CommodityList = () => {
   const [search, setSearch] = useState("");
@@ -27,16 +28,6 @@ const CommodityList = () => {
     event.preventDefault();
     setQuery(search.toUpperCase());
   };
-
-  if ((isPending && !data) || isFetching) {
-    return (
-      <>
-        <div className={style.spinner_box}>
-          <Spinner />
-        </div>
-      </>
-    );
-  }
 
   if (isError) {
     return (
@@ -62,45 +53,60 @@ const CommodityList = () => {
         search={search}
         handleSearch={handleSearch}
         handleSearchSubmit={handleSearchSubmit}
+        disabled={isPending || isFetching}
       />
-      <div className={style.commodities_contaier}>
-        {data.pages.map((page) => {
-          return (
-            <ul key={page.currentPage}>
-              {page?.data?.map(
-                (commodity) =>
-                  commodity.uuid && (
-                    <CommodityCard
-                      commodityData={commodity}
-                      key={commodity.uuid}
-                    />
-                  ),
-              )}
-            </ul>
-          );
-        })}
-
-        <div className={style.button_box}>
-          {(data.pages[0].data.length > 0 &&
-            (hasNextPage &&
-            data.pages[data.pages.length - 1].data.length > 9 ? (
-              isFetching ? (
-                <div className={style.loading_box}>
-                  <Ellipsis />
-                </div>
-              ) : (
-                <Button onClick={handleLoadMore} variant="outline" size="small">
-                  Load More
-                </Button>
-              )
-            ) : (
-              <p className="py-5 text-[16px] font-[600] leading-6">
-                {`You've hit the end of the page`}
-              </p>
-            ))) ??
-            null}
+      {isPending && !data ? (
+        <div className={style.spinner_box}>
+          <Spinner />
         </div>
-      </div>
+      ) : (
+        <div className={style.commodities_contaier}>
+          {data.pages[0].data.length > 0 ? (
+            data.pages.map((page) => {
+              return (
+                <ul key={page.currentPage}>
+                  {page?.data?.map(
+                    (commodity) =>
+                      commodity.uuid && (
+                        <CommodityCard
+                          commodityData={commodity}
+                          key={commodity.uuid}
+                        />
+                      ),
+                  )}
+                </ul>
+              );
+            })
+          ) : (
+            <CommodityEmpty />
+          )}
+
+          <div className={style.button_box}>
+            {(data.pages[0].data.length > 0 &&
+              (hasNextPage &&
+              data.pages[data.pages.length - 1].data.length > 9 ? (
+                isFetching ? (
+                  <div className={style.loading_box}>
+                    <Ellipsis />
+                  </div>
+                ) : (
+                  <Button
+                    onClick={handleLoadMore}
+                    variant="outline"
+                    size="small"
+                  >
+                    Load More
+                  </Button>
+                )
+              ) : (
+                <p className="py-5 text-[16px] font-[600] leading-6">
+                  {`You've hit the end of the page`}
+                </p>
+              ))) ??
+              null}
+          </div>
+        </div>
+      )}
     </section>
   );
 };

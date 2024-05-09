@@ -103,4 +103,5 @@ export interface ICommoditySearch {
   handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   search: string;
   handleSearchSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  disabled?: boolean;
 }

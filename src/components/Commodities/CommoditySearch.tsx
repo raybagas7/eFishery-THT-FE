@@ -9,6 +9,7 @@ const CommoditySearch = ({
   handleSearch,
   search,
   handleSearchSubmit,
+  disabled,
 }: ICommoditySearch) => {
   return (
     <form className={style.search_box} onSubmit={handleSearchSubmit}>
@@ -19,10 +20,16 @@ const CommoditySearch = ({
           variant="small"
           value={search}
           onChange={handleSearch}
+          disabled={disabled}
         />
       </div>
       <div className={style.submit_button_wrapper}>
-        <Button size="small" variant="outline" type="submit">
+        <Button
+          disabled={disabled}
+          size="small"
+          variant="outline"
+          type="submit"
+        >
           <div className={style.button_child}>
             Search
             <FaSearch />
