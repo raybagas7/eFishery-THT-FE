@@ -7,7 +7,7 @@ const DesktopNavigation = () => {
   return (
     <>
       <MobileSideBar />
-      <div className={style.desktop_nav_container}>
+      <aside className={style.desktop_nav_container}>
         <div className={style.desktop_nav_box}>
           <div className={style.banner_box}>
             <Image
@@ -21,7 +21,7 @@ const DesktopNavigation = () => {
             <ul></ul>
           </nav>
         </div>
-      </div>
+      </aside>
     </>
   );
 };
