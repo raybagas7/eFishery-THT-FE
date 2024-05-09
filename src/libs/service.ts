@@ -1,3 +1,4 @@
+import { IAddCommodityPayload } from "@/interfaces/components";
 import { ProvinceObject } from "@/types/alltypes";
 
 export const fetchSize = async () => {
@@ -56,4 +57,20 @@ export const fetchArea = async () => {
       }
     }),
   };
+};
+
+export const fetchAddList = async (data: IAddCommodityPayload[]) => {
+  console.log(data);
+
+  const response = await fetch(`${process.env.BASE_API_URL}/list`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  const res = await response.json();
+  console.log(res);
+
+  return res;
 };

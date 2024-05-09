@@ -19,3 +19,12 @@ export type ProvinceObject = {
     }[];
   };
 };
+
+export type FormData = {
+  komoditas: string;
+  harga: number;
+  tanggal: Date;
+  ukuran: number;
+  provinsi: string;
+  kota: string;
+};

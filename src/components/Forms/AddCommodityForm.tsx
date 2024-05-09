@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import InputUi from "../ui/input-ui";
 import SelectUi from "../ui/select-ui";
 import { useQuery } from "@tanstack/react-query";
-import { fetchArea, fetchSize } from "@/libs/service";
+import { fetchAddList, fetchArea, fetchSize } from "@/libs/service";
 import { z, ZodType } from "zod";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,15 +12,9 @@ import DatePicker from "react-datepicker";
 import CalendarButton from "../ui/calendar-button";
 import ErrorMessage from "../ui/error-msg";
 import { formatDate } from "@/libs/utils";
-
-type FormData = {
-  komoditas: string;
-  harga: number;
-  tanggal: Date;
-  ukuran: number;
-  provinsi: string;
-  kota: string;
-};
+import { FormData } from "@/types/alltypes";
+import { IAddCommodityPayload } from "@/interfaces/components";
+import { v4 as uuidv4 } from "uuid";
 
 const AddCommodityForm = () => {
   const [selectedProvince, setProvince] = useState<string>();
@@ -60,6 +54,18 @@ const AddCommodityForm = () => {
   const onSubmit = (data: FormData) => {
     console.log("IT WORKED", data);
     console.log(formatDate(data.tanggal, "long"));
+    const payload: IAddCommodityPayload = {
+      uuid: uuidv4(),
+      komoditas: data.komoditas,
+      area_provinsi: data.provinsi,
+      area_kota: data.kota,
+      size: String(data.ukuran),
+      price: String(data.harga),
+      tgl_parsed: data.tanggal.toISOString().substring(0, 19) + "Z",
+      timestamp: String(data.tanggal.getTime()),
+    };
+
+    fetchAddList([payload]);
   };
 
   useEffect(() => {
