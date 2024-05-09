@@ -4,11 +4,11 @@ import style from "./CommodityList.module.scss";
 import Button from "../ui/button";
 import CommodityCard from "./CommodityCard";
 import Link from "next/link";
-import { RiFilter2Line, RiUserAddLine } from "react-icons/ri";
 import Spinner from "../ui/spinner";
 import Ellipsis from "../ui/ellipsis";
 import CommoditySearch from "./CommoditySearch";
 import CommodityEmpty from "./CommodityEmpty";
+import { IoMdAdd } from "react-icons/io";
 
 const CommodityList = () => {
   const [search, setSearch] = useState("");
@@ -43,9 +43,11 @@ const CommodityList = () => {
       <div className={style.page_header_box}>
         <h1>Commodity List</h1>
         <div className={style.action_box}>
-          <RiFilter2Line />
           <Link href={"/commodity/add"}>
-            <RiUserAddLine />
+            <Button size="small">
+              Tambah Komoditas
+              <IoMdAdd />
+            </Button>
           </Link>
         </div>
       </div>

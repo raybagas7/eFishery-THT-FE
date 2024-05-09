@@ -10,8 +10,16 @@
     margin-bottom: 10px;
 
     .action_box {
+      display: flex;
       svg {
         cursor: pointer;
+        width: 16px;
+        height: 16px;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
       }
     }
 
