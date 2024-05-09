@@ -39,6 +39,7 @@ export interface ICalendar extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode;
+  variant?: "small" | "base";
 }
 
 export interface IOption {

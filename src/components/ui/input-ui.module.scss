@@ -1,6 +1,6 @@
 @import "@/styles/index.module.scss";
 
-.input_container {
+.input_container_base {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -20,6 +20,30 @@
     min-width: none;
     &:focus {
       outline: $primary solid 1px;
+    }
+  }
+}
+
+.input_container_sm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 8px;
+    cursor: pointer;
+    text-transform: capitalize;
+  }
+
+  input {
+    height: 18px;
+    border: $border solid 0.5px;
+    border-radius: 8px;
+    font-size: 12px;
+    padding-left: 8px;
+    min-width: none;
+    &:focus {
+      outline: $primary solid 0.5px;
     }
   }
 }

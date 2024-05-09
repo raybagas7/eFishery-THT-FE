@@ -1,5 +1,5 @@
 import { useCommodityList } from "@/hooks/useCommodityList";
-import React from "react";
+import React, { useState } from "react";
 import style from "./CommodityList.module.scss";
 import Button from "../ui/button";
 import CommodityCard from "./CommodityCard";
@@ -7,20 +7,35 @@ import Link from "next/link";
 import { RiFilter2Line, RiUserAddLine } from "react-icons/ri";
 import Spinner from "../ui/spinner";
 import Ellipsis from "../ui/ellipsis";
+import InputUi from "../ui/input-ui";
+import { FaSearch } from "react-icons/fa";
 
 const CommodityList = () => {
+  const [search, setSearch] = useState("");
+  const [query, setQuery] = useState("");
   const { isPending, isError, data, isFetching, fetchNextPage, hasNextPage } =
-    useCommodityList();
+    useCommodityList(query);
 
   const handleLoadMore = () => {
     fetchNextPage();
   };
 
-  if (isPending && !data) {
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(event.target.value);
+  };
+
+  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setQuery(search);
+  };
+
+  if ((isPending && !data) || isFetching) {
     return (
-      <div className={style.spinner_box}>
-        <Spinner />
-      </div>
+      <>
+        <div className={style.spinner_box}>
+          <Spinner />
+        </div>
+      </>
     );
   }
 
@@ -44,6 +59,24 @@ const CommodityList = () => {
           </Link>
         </div>
       </div>
+      <form className={style.search_box} onSubmit={handleSearchSubmit}>
+        <div className={style.input_wrapper}>
+          <InputUi
+            placeholder="Cari komoditas"
+            variant="small"
+            value={search}
+            onChange={handleSearch}
+          />
+        </div>
+        <div className={style.submit_button_wrapper}>
+          <Button size="small" variant="outline" type="submit">
+            <div className={style.button_child}>
+              Search
+              <FaSearch />
+            </div>
+          </Button>
+        </div>
+      </form>
       <div className={style.commodities_contaier}>
         {data.pages.map((page) => {
           return (
