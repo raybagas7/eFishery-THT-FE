@@ -61,6 +61,17 @@ export interface IAddCommodityPayload {
   timestamp: string;
 }
 
+export interface IEditCommodityPayload {
+  uuid?: string;
+  komoditas?: string;
+  area_provinsi?: string;
+  area_kota?: string;
+  size?: string;
+  price?: string;
+  tgl_parsed?: string;
+  timestamp?: string;
+}
+
 export interface IModalProps {
   backDropClose?: boolean;
   component?: React.ReactNode;
@@ -68,6 +79,10 @@ export interface IModalProps {
 
 export interface IAddConfirmation {
   payload: IAddCommodityPayload;
+}
+
+export interface IEditConfirmation {
+  payload: IEditCommodityPayload;
 }
 
 export interface ICommodityForm {

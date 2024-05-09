@@ -1,5 +1,5 @@
-import { IAddConfirmation } from "@/interfaces/components";
-import { fetchAddList } from "@/libs/service";
+import { IEditConfirmation } from "@/interfaces/components";
+import { fetchEditList } from "@/libs/service";
 import { useModal } from "@/store/useModal";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React from "react";
@@ -8,13 +8,14 @@ import Button from "../ui/button";
 import { useRouter } from "next/router";
 import style from "./Confirmation.module.scss";
 
-const AddConfirmation = ({ payload }: IAddConfirmation) => {
+const EditConfirmation = ({ payload }: IEditConfirmation) => {
   const { hideModal } = useModal();
   const queryClient = useQueryClient();
   const router = useRouter();
+  console.log(payload);
 
   const { mutate } = useMutation({
-    mutationFn: (): Promise<{ status: number }> => fetchAddList([payload]),
+    mutationFn: (): Promise<{ status: number }> => fetchEditList([payload]),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["commodities"],
@@ -34,13 +35,13 @@ const AddConfirmation = ({ payload }: IAddConfirmation) => {
   return (
     <div className={`${style.confirmation_container} ${style.bg_secondary}`}>
       <div className={style.confirmation_header}>
-        <h3>Tambah Komoditas</h3>
+        <h3>Edit Komoditas</h3>
         <RiCloseLine onClick={hideModal} />
       </div>
       <div>
         <p>
-          Periksa kembali data yang telah anda isi sudah tidak memiliki
-          kesalahan atau typo
+          {`Yakin kah kamu akan mengubah data untuk komoditas `}
+          <span>{payload.komoditas}</span> {"ini ?"}
         </p>
       </div>
       <div className={style.confirmation_buttons_box}>
@@ -53,4 +54,4 @@ const AddConfirmation = ({ payload }: IAddConfirmation) => {
   );
 };
 
-export default AddConfirmation;
+export default EditConfirmation;

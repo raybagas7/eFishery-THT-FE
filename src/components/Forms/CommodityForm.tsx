@@ -16,6 +16,7 @@ import { useQuery } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormData } from "@/types/alltypes";
 import { useModal } from "@/store/useModal";
+import EditConfirmation from "../Actions/EditConfirmation";
 
 const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
   const { showModal } = useModal();
@@ -63,7 +64,11 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
     };
 
     console.log(payload);
-    showModal(<AddConfirmation payload={payload} />);
+    if (crud === "edit") {
+      showModal(<EditConfirmation payload={payload} />);
+    } else {
+      showModal(<AddConfirmation payload={payload} />);
+    }
   };
 
   useEffect(() => {
@@ -195,7 +200,9 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
       {errors.kota && <ErrorMessage message={errors.kota.message} />}
 
       <div>
-        <Button type="submit">Submit</Button>
+        <Button type="submit">
+          {crud === "edit" ? "Edit Commodity" : "Add Commodity"}
+        </Button>
       </div>
     </form>
   );

@@ -1,4 +1,7 @@
-import { IAddCommodityPayload } from "@/interfaces/components";
+import {
+  IAddCommodityPayload,
+  IEditCommodityPayload,
+} from "@/interfaces/components";
 import { ProvinceObject } from "@/types/alltypes";
 
 export const fetchSize = async () => {
@@ -71,6 +74,26 @@ export const fetchAddList = async (data: IAddCommodityPayload[]) => {
   });
   const res = await response.json();
   console.log(res);
+
+  return res;
+};
+
+export const fetchEditList = async (data: IEditCommodityPayload[]) => {
+  const { uuid, ...setWithoutUuid } = data[0];
+
+  const editPayload = {
+    condition: { uuid },
+    set: setWithoutUuid,
+  };
+
+  const response = await fetch(`${process.env.BASE_API_URL}/list`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(editPayload),
+  });
+  const res = await response.json();
 
   return res;
 };

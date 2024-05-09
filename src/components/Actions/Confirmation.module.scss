@@ -30,6 +30,10 @@
     border-bottom: 1px solid $border;
     border-top: 1px solid $border;
     padding: 20px;
+
+    span {
+      font-weight: bold;
+    }
   }
 
   .confirmation_buttons_box {
