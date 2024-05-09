@@ -82,14 +82,14 @@ const MobileSideBar = () => {
           <nav className={style.navigation}>
             <ul>
               <ListNavigation
-                name="Commodity list"
+                name="List Komoditas"
                 to="/"
                 icon={<FiShare />}
                 onClick={() => onChangeNav("list")}
                 isActive={activePage === "list"}
               />
               <ListNavigation
-                name="Add Commodity"
+                name="Tambah Komoditas"
                 to="/commodity/add"
                 icon={<BiPlug />}
                 onClick={() => onChangeNav("add")}

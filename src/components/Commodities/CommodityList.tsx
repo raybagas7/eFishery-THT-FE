@@ -42,7 +42,7 @@ const CommodityList = () => {
   return (
     <section className={style.commodities_section}>
       <div className={style.page_header_box}>
-        <h1>Commodity List</h1>
+        <h1>List Komoditas</h1>
         <div className={style.action_box}>
           <Link href={"/commodity/add"}>
             <Button size="small">

@@ -31,14 +31,14 @@ const DesktopNavigation = () => {
           <nav className={style.navigation}>
             <ul>
               <ListNavigation
-                name="Commodity list"
+                name="List Komoditas"
                 to="/"
                 icon={<RiListOrdered />}
                 onClick={() => onChangeNav("list")}
                 isActive={activePage === "list"}
               />
               <ListNavigation
-                name="Add Commodity"
+                name="Tambah Komoditas"
                 to="/commodity/add"
                 icon={<BiPlus />}
                 onClick={() => onChangeNav("add")}

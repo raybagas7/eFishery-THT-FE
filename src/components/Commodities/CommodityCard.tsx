@@ -8,6 +8,7 @@ import { formatDate, formatIDR } from "@/libs/utils";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { motion } from "framer-motion";
 import CommodityDesktopCard from "./CommodityDesktopCard";
+import { GiDoubleFish } from "react-icons/gi";
 
 const CommodityCard = ({ commodityData, index, page }: ICommodityCard) => {
   const [hideDetail, setHideDetail] = useState<boolean | undefined>(false);
@@ -44,9 +45,9 @@ const CommodityCard = ({ commodityData, index, page }: ICommodityCard) => {
       <div className={style.commodity_box}>
         <div className={style.commodity_head}>
           <p>
-            Komoditas - {commodityData.komoditas} - {commodityData.size}
+            {commodityData.komoditas} - <span>Ukuran {commodityData.size}</span>
           </p>
-          {/* <p>{formatDate(new Date(commodityData.tgl_parsed), "short")}</p> */}
+          <GiDoubleFish />
         </div>
         <BsThreeDotsVertical
           className={style.commodity_option}
@@ -77,6 +78,7 @@ const CommodityCard = ({ commodityData, index, page }: ICommodityCard) => {
           <p>Tanggal</p>
           <p>{formatDate(new Date(commodityData.tgl_parsed), "short")}</p>
         </div>
+
         <div>
           <p>Harga</p>
           <p>{formatIDR(parseInt(commodityData.price))}</p>
