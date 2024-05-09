@@ -64,7 +64,6 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
       timestamp: String(data.tanggal.getTime()),
     };
 
-    console.log(payload);
     if (crud === "edit") {
       showModal(<EditConfirmation payload={payload} />);
     } else {

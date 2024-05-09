@@ -12,6 +12,7 @@ function MainLayout({ children }: IUserSellerLayout) {
       },
     },
   });
+
   return (
     <div className={style.main_layout}>
       <DesktopNavigation />

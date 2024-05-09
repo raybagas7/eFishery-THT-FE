@@ -10,8 +10,6 @@ interface ICommodityDetail {
 }
 
 const CommodityDetail = ({ commodityData }: ICommodityDetail) => {
-  console.log(commodityData);
-
   return (
     <section className={style.commodity_detail_container}>
       <div className={style.commodity_detail_card}>

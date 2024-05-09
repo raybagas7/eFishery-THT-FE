@@ -1,4 +1,3 @@
-"use clients";
 import { useCommodityList } from "@/hooks/useCommodityList";
 import React from "react";
 import style from "./CommodityList.module.scss";
@@ -33,8 +32,6 @@ const CommodityList = () => {
       </div>
     );
   }
-
-  console.log(data);
 
   return (
     <section className={style.commodities_section}>

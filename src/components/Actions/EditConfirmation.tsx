@@ -13,7 +13,6 @@ const EditConfirmation = ({ payload }: IEditConfirmation) => {
   const { hideModal } = useModal();
   const queryClient = useQueryClient();
   const router = useRouter();
-  console.log(payload);
 
   const { mutate, isPending } = useMutation({
     mutationFn: (): Promise<{ status: number }> => fetchEditList([payload]),
@@ -26,9 +25,7 @@ const EditConfirmation = ({ payload }: IEditConfirmation) => {
       router.push("/");
     },
 
-    onError: (error) => {
-      console.log(error);
-
+    onError: () => {
       hideModal();
     },
   });

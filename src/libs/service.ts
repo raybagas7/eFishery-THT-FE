@@ -2,7 +2,38 @@ import {
   IAddCommodityPayload,
   IEditCommodityPayload,
 } from "@/interfaces/components";
-import { ProvinceObject } from "@/types/alltypes";
+import { Commodity, ProvinceObject } from "@/types/alltypes";
+
+export async function fetchCommodities({
+  pageParam,
+}: {
+  pageParam: number;
+}): Promise<{
+  data: Commodity[];
+  currentPage: number;
+  nextPage: number | null;
+}> {
+  try {
+    const response = await fetch(
+      `${process.env.BASE_API_URL}/list?limit=10&offset=${pageParam * 10}`,
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch data from Stein API");
+    }
+
+    const data: Commodity[] = await response.json();
+
+    return {
+      data,
+      currentPage: pageParam,
+      nextPage: data.length > 0 ? pageParam + 1 : null,
+    };
+  } catch (error) {
+    console.error("Error fetching data from Stein API:", error);
+    throw error;
+  }
+}
 
 export const fetchSize = async () => {
   const response = await fetch(`${process.env.BASE_API_URL}/option_size`);
@@ -63,8 +94,6 @@ export const fetchArea = async () => {
 };
 
 export const fetchAddList = async (data: IAddCommodityPayload[]) => {
-  console.log(data);
-
   const response = await fetch(`${process.env.BASE_API_URL}/list`, {
     method: "POST",
     headers: {
@@ -73,7 +102,6 @@ export const fetchAddList = async (data: IAddCommodityPayload[]) => {
     body: JSON.stringify(data),
   });
   const res = await response.json();
-  console.log(res);
 
   return res;
 };

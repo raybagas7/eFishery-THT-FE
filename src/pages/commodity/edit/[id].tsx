@@ -50,7 +50,6 @@ export const getServerSideProps: GetServerSideProps = async ({
       notFound: true,
     };
   }
-  console.log(commodity);
 
   return {
     props: {

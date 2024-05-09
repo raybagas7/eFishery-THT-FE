@@ -24,9 +24,7 @@ const AddConfirmation = ({ payload }: IAddConfirmation) => {
       router.push("/");
     },
 
-    onError: (error) => {
-      console.log(error);
-
+    onError: () => {
       hideModal();
     },
   });
