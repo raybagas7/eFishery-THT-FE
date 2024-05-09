@@ -7,6 +7,7 @@ import { RiCloseLine } from "react-icons/ri";
 import Button from "../ui/button";
 import { useRouter } from "next/router";
 import style from "./Confirmation.module.scss";
+import Ellipsis from "../ui/ellipsis";
 
 const EditConfirmation = ({ payload }: IEditConfirmation) => {
   const { hideModal } = useModal();
@@ -14,7 +15,7 @@ const EditConfirmation = ({ payload }: IEditConfirmation) => {
   const router = useRouter();
   console.log(payload);
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: (): Promise<{ status: number }> => fetchEditList([payload]),
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -45,10 +46,22 @@ const EditConfirmation = ({ payload }: IEditConfirmation) => {
         </p>
       </div>
       <div className={style.confirmation_buttons_box}>
-        <Button variant="destructive" onClick={hideModal}>
-          Batalkan
-        </Button>
-        <Button onClick={() => mutate()}>Lanjutkan</Button>
+        {isPending ? (
+          <Ellipsis />
+        ) : (
+          <>
+            <Button
+              variant="destructive"
+              onClick={hideModal}
+              disabled={isPending}
+            >
+              Batalkan
+            </Button>
+            <Button onClick={() => mutate()} disabled={isPending}>
+              Lanjutkan
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );
