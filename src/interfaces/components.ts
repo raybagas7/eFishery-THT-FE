@@ -69,3 +69,8 @@ export interface IModalProps {
 export interface IAddConfirmation {
   payload: IAddCommodityPayload;
 }
+
+export interface ICommodityForm {
+  commodityData?: Commodity;
+  crud: "add" | "edit";
+}

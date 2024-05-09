@@ -1,8 +1,8 @@
 import MainLayout from "@/components/Layout/MainLayout";
 import React, { ReactElement } from "react";
 import style from "@/styles/index.module.scss";
-import AddCommodityForm from "@/components/Forms/AddCommodityForm";
 import Modal from "@/components/ui/modal";
+import CommodityForm from "@/components/Forms/CommodityForm";
 
 const AddCommodity = () => {
   // const options = [
@@ -14,7 +14,7 @@ const AddCommodity = () => {
     <>
       <Modal backDropClose />
       <div className={style.main_container}>
-        <AddCommodityForm />
+        <CommodityForm crud="add" />
       </div>
     </>
   );

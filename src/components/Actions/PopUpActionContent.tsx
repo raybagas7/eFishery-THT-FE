@@ -38,7 +38,7 @@ const PopUpActionContent = ({ uuid }: IPopUpActionContent) => {
         <Link href={`/commodity/detail/${uuid}`} onClick={hidePopup}>
           View
         </Link>
-        <Link href={"/commodity/edit/id"} onClick={hidePopup}>
+        <Link href={`/commodity/edit/${uuid}`} onClick={hidePopup}>
           Edit
         </Link>
         <Link href={"/delete"} onClick={hidePopup}>
