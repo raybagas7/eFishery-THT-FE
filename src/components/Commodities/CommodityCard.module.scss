@@ -33,6 +33,8 @@
     }
 
     .commodity_option {
+      width: 18px;
+      height: 18px;
       cursor: pointer;
       &:hover {
         color: $primary;
