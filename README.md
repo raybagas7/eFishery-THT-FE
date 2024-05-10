@@ -137,3 +137,23 @@ Before get into docker build, ensure you have Docker installed on your machine. 
 This command will start the Docker container and run the application.
 
 Once the Docker container is running, you can access the Node.js application by opening a web browser and navigating to localhost:3000.
+
+## Testing
+
+This project is covered by two types of tests: unit tests using Jest and end-to-end tests using Cypress.
+
+### Unit Test | Jest
+
+To test the application, you can run unit tests with Jest. To run the tests once, use the following command:
+
+```bash
+npm run test
+```
+
+If you want to develop more or perform continuous testing, you can run the tests in watch mode:
+
+```bash
+npm run test:watch
+```
+
+If you want to add more test case, the test directory is on root directory
