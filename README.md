@@ -146,6 +146,14 @@ This project is covered by two types of tests: unit tests using Jest and end-to-
 
 To test the application, you can run unit tests with Jest. To run the tests once, use the following command:
 
+Ensure that you have set the .env to the root directory:
+
+```bash
+  cp .env.example .env
+```
+
+**_follow the .env.example and fill every variable and base api url with your needs_**
+
 ```bash
 npm run test
 ```
