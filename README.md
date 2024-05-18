@@ -35,25 +35,25 @@ The Fish Commodity Management System is a Frontend Web Application + (PWA) for m
 Clone the project
 
 ```bash
-  git clone https://github.com/raybagas7/eFishery-THT-FE.git
+git clone https://github.com/raybagas7/eFishery-THT-FE.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd eFishery-THT-FE
+cd eFishery-THT-FE
 ```
 
 Install dependencies
 
 ```bash
-  npm install
+npm install
 ```
 
 Environment variable
 
 ```bash
-  cp .env.example .env
+cp .env.example .env
 ```
 
 **_follow the .env.example and fill every variable and base api url with your needs_**
@@ -61,7 +61,7 @@ Environment variable
 Start the application in Development mode.
 
 ```bash
-  npm run dev
+npm run dev
 ```
 
 **_(Web app will run on port 3000)_**
@@ -69,11 +69,11 @@ Start the application in Development mode.
 To build and start the application you can run this command
 
 ```bash
-  npm run build
+npm run build
 ```
 
 ```bash
-  npm run start
+npm run start
 ```
 
 **_(Web app will run on port 3000)_**
@@ -119,6 +119,14 @@ When you want to continue developing this application, follow these steps:
 
 Before get into docker build, ensure you have Docker installed on your machine. You can download and install Docker from the . [official website](https://www.docker.com)
 
+Ensure that you have set the .env to the root directory:
+
+```bash
+cp .env.example .env
+```
+
+**_follow the .env.example and fill every variable and base api url with your needs_**
+
 - **Navigate** to the project when you clone this project already.
 - **Build** the Docker image for the Node.js application
 
@@ -145,14 +153,6 @@ This project is covered by two types of tests: unit tests using Jest and end-to-
 ### Unit Test | Jest
 
 To test the application, you can run unit tests with Jest. To run the tests once, use the following command:
-
-Ensure that you have set the .env to the root directory:
-
-```bash
-  cp .env.example .env
-```
-
-**_follow the .env.example and fill every variable and base api url with your needs_**
 
 ```bash
 npm run test
