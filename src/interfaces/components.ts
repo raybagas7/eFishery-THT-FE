@@ -23,6 +23,10 @@ export interface ICommodityCard extends IDetailCommodity {
   index: number;
   page: number;
 }
+export interface ICommodityDeletedCard {
+  index: number;
+  page: number;
+}
 
 export interface IPopUpActionContent {
   uuid: string;
@@ -111,6 +115,11 @@ export interface ICommoditySearch {
 }
 
 export interface ICommodityDesktopCard extends IDetailCommodity {
+  index: number;
+  page: number;
+}
+
+export interface ICommodityDeletedDesktopCard {
   index: number;
   page: number;
 }

@@ -91,3 +91,12 @@
     }
   }
 }
+
+.list_card_deleted {
+  display: none;
+
+  @include media(">tablet") {
+    display: block;
+    border-bottom: 1px solid $primary;
+  }
+}

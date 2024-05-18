@@ -10,6 +10,7 @@ import CommoditySearch from "./CommoditySearch";
 import CommodityEmpty from "./CommodityEmpty";
 import { IoMdAdd } from "react-icons/io";
 import CommodityTitle from "./CommodityTitle";
+import DeletedCommodityCard from "./DeletedCommodityCard";
 
 const CommodityList = () => {
   const [search, setSearch] = useState("");
@@ -79,16 +80,21 @@ const CommodityList = () => {
             data.pages.map((page, pageIndex) => {
               return (
                 <ul key={page.currentPage}>
-                  {page?.data?.map(
-                    (commodity, index) =>
-                      commodity.uuid && (
-                        <CommodityCard
-                          index={index}
-                          page={pageIndex}
-                          commodityData={commodity}
-                          key={commodity.uuid}
-                        />
-                      ),
+                  {page?.data?.map((commodity, index) =>
+                    commodity.uuid ? (
+                      <CommodityCard
+                        index={index}
+                        page={pageIndex}
+                        commodityData={commodity}
+                        key={commodity.uuid}
+                      />
+                    ) : (
+                      <DeletedCommodityCard
+                        index={index}
+                        page={pageIndex}
+                        key={index + pageIndex}
+                      />
+                    ),
                   )}
                 </ul>
               );
