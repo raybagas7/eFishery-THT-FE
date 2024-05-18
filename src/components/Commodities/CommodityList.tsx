@@ -35,6 +35,7 @@ const CommodityList = () => {
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setQuery(search.toUpperCase());
     setKey(select);
   };
