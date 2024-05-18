@@ -48,8 +48,8 @@ const DesktopNavigation = () => {
                 name="Shrimp"
                 to="/"
                 icon={<FaShrimp />}
-                onClick={() => onChangeNav("edit")}
-                isActive={activePage === "edit"}
+                onClick={() => onChangeNav("shrimp")}
+                isActive={activePage === "shrimp"}
               />
               <ListNavigation
                 name="Fish"

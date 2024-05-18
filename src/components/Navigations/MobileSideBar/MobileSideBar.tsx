@@ -97,11 +97,11 @@ const MobileSideBar = () => {
                 isActive={activePage === "add"}
               />
               <ListNavigation
-                name="Shrim"
+                name="p"
                 to="/"
                 icon={<FaShrimp />}
-                onClick={() => onChangeNav("edit")}
-                isActive={activePage === "edit"}
+                onClick={() => onChangeNav("shrimp")}
+                isActive={activePage === "shrimp"}
               />
               <ListNavigation
                 name="Fish"
