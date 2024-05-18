@@ -23,6 +23,7 @@ const CommoditySearch = ({
   return (
     <form className={style.search_box} onSubmit={handleSearchSubmit}>
       <div className={style.select_wrapper}>
+        <p>Search By</p>
         <SelectUi
           isDisabled={disabled}
           options={options}
