@@ -137,10 +137,14 @@ cp .env.example .env
 - **Run** the Docker container
 
   ```bash
-  docker-compose build
+  docker-compose up
   ```
 
-  docker-compose up
+  This command will start the Docker container and run the application. To stop the container, press Ctrl + C in the terminal where it's running or run:
+
+  ```bash
+  docker-compose down
+  ```
 
 This command will start the Docker container and run the application.
 
