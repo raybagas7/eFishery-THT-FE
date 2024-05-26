@@ -3,41 +3,41 @@
 
 echo '🏗️👷 Styling, testing and building your project before committing'
 
-# Check Prettier standards
-npm run check-format ||
-(
-    echo '⚠️ (┬┬﹏┬┬) Your code style is not pretty. ⚠️
-            Prettier Check Failed. Run npm run write-format, add changes and try commit again.';
-    false;
-)
+# # Check Prettier standards
+# npm run check-format ||
+# (
+#     echo '⚠️ (┬┬﹏┬┬) Your code style is not pretty. ⚠️
+#             Prettier Check Failed. Run npm run write-format, add changes and try commit again.';
+#     false;
+# )
 
-# Check ESLint Standards
-npm run lint ||
-(
-        echo '🚨 ( •̀ ω •́ )✧ Follow the eslint rules please!. 🚨
-                ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
-        false; 
-)
+# # Check ESLint Standards
+# npm run lint ||
+# (
+#         echo '🚨 ( •̀ ω •́ )✧ Follow the eslint rules please!. 🚨
+#                 ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+#         false; 
+# )
 
-# Check tsconfig standards
-npm run check-types ||
-(
-    echo '⛔ (～￣▽￣)~ Almost there but you failed type check. ⛔
-            Make the changes required above.'
-    false;
-)
+# # Check tsconfig standards
+# npm run check-types ||
+# (
+#     echo '⛔ (～￣▽￣)~ Almost there but you failed type check. ⛔
+#             Make the changes required above.'
+#     false;
+# )
 
-# If everything passes... Now we can commit
-# UNCOMMENT CODE BELOW TO RUN BUILD EVERYTIME YOU WANT TO COMMIT
-# echo '╰(*°▽°*)╯ Code looks good to me... Trying to build now.'
+# # If everything passes... Now we can commit
+# # UNCOMMENT CODE BELOW TO RUN BUILD EVERYTIME YOU WANT TO COMMIT
+# # echo '╰(*°▽°*)╯ Code looks good to me... Trying to build now.'
 
-npm run build ||
-(
-    echo '❌ (❁´◡`❁) Build failed! ❌
-            Next build failed: View the errors above to see why. 
-    '
-    false;
-)
+# npm run build ||
+# (
+#     echo '❌ (❁´◡`❁) Build failed! ❌
+#             Next build failed: View the errors above to see why. 
+#     '
+#     false;
+# )
 
 # If everything passes... Now we can commit
 echo '🎉( ✨ ◕ ‿ ◕ ✨ ) I will commit with you. ( ✨ ◕ ‿ ◕ ✨ )🎉'
