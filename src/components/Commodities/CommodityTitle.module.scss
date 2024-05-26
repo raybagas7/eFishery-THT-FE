@@ -1,6 +1,7 @@
 @import "@/styles/index.module.scss";
 
 .commodity_title_container {
+  z-index: 10;
   position: sticky;
   display: none;
   background-color: $primary;

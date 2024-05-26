@@ -11,6 +11,7 @@ import CommodityEmpty from "./CommodityEmpty";
 import { IoMdAdd } from "react-icons/io";
 import CommodityTitle from "./CommodityTitle";
 import DeletedCommodityCard from "./DeletedCommodityCard";
+import { Virtuoso } from "react-virtuoso";
 
 const CommodityList = () => {
   const [search, setSearch] = useState("");
@@ -78,28 +79,32 @@ const CommodityList = () => {
       ) : (
         <div className={style.commodities_contaier}>
           {data.pages[0].data.length > 0 ? (
-            data.pages.map((page, pageIndex) => {
-              return (
-                <ul key={page.currentPage}>
-                  {page?.data?.map((commodity, index) =>
-                    commodity.uuid ? (
-                      <CommodityCard
-                        index={index}
-                        page={pageIndex}
-                        commodityData={commodity}
-                        key={commodity.uuid}
-                      />
-                    ) : (
-                      <DeletedCommodityCard
-                        index={index}
-                        page={pageIndex}
-                        key={index + pageIndex}
-                      />
-                    ),
-                  )}
-                </ul>
-              );
-            })
+            <Virtuoso
+              data={data.pages}
+              itemContent={(pageIndex, commodity) => {
+                return (
+                  <ul key={commodity.currentPage}>
+                    {commodity?.data?.map((commodity, index) =>
+                      commodity.uuid ? (
+                        <CommodityCard
+                          index={index}
+                          page={pageIndex}
+                          commodityData={commodity}
+                          key={commodity.uuid}
+                        />
+                      ) : (
+                        <DeletedCommodityCard
+                          index={index}
+                          page={pageIndex}
+                          key={index + pageIndex}
+                        />
+                      ),
+                    )}
+                  </ul>
+                );
+              }}
+              useWindowScroll
+            />
           ) : (
             <CommodityEmpty />
           )}
