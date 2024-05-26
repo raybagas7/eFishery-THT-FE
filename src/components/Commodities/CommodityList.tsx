@@ -30,7 +30,6 @@ const CommodityList = () => {
   };
 
   const handleSelect = (value: string) => {
-    console.log(value);
     setSelect(value);
   };
 

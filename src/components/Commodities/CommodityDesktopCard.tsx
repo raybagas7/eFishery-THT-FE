@@ -13,8 +13,6 @@ const CommodityDesktopCard = ({
 }: ICommodityDesktopCard) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
-  console.log(isPopoverOpen);
-
   const togglePopover = useCallback(() => {
     setIsPopoverOpen((prev) => !prev);
   }, []);
