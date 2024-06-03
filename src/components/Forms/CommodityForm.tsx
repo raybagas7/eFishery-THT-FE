@@ -42,13 +42,13 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
     resolver: zodResolver(schema),
   });
 
-  const { data: optionSize, isLoading: sizeLoading } = useQuery({
+  const sizesData = useQuery({
     queryKey: ["option-sizes"],
     queryFn: fetchSize,
   });
 
-  const { data: optionArea, isLoading: sizeArea } = useQuery({
-    queryKey: ["option-province"],
+  const provinceData = useQuery({
+    queryKey: ["option-area"],
     queryFn: fetchArea,
   });
 
@@ -132,7 +132,7 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
             <div>
               <SelectUi
                 {...register("ukuran")}
-                options={optionSize}
+                options={sizesData.data}
                 onChange={(e) =>
                   e && setValue("ukuran", parseInt(e.value as string))
                 }
@@ -140,8 +140,8 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
                   value: crud === "edit" ? String(field.value) : field.value,
                   label: crud === "edit" ? String(field.value) : field.value,
                 }}
-                isLoading={sizeLoading}
-                placeholder={sizeLoading ? "Loading" : "Pilih ukuran"}
+                isLoading={sizesData.isLoading}
+                placeholder={sizesData.isLoading ? "Loading" : "Pilih ukuran"}
               />
               {errors.ukuran && (
                 <ErrorMessage message={errors.ukuran.message} />
@@ -158,15 +158,17 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
               <div>
                 <SelectUi
                   {...register("provinsi")}
-                  options={optionArea?.province}
+                  options={provinceData.data?.province}
                   onChange={(e) => {
                     e && setValue("provinsi", e.value as string);
                     e && setProvince(e.value as string);
                     e && setValue("kota", "");
                   }}
                   value={{ value: field.value, label: field.value }}
-                  isLoading={sizeArea}
-                  placeholder={sizeArea ? "Loading" : "Pilih provinsi"}
+                  isLoading={provinceData.isLoading}
+                  placeholder={
+                    provinceData.isLoading ? "Loading" : "Pilih provinsi"
+                  }
                 />
                 {errors.provinsi && (
                   <ErrorMessage message={errors.provinsi.message} />
@@ -184,10 +186,11 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
                   {...register("kota")}
                   options={
                     selectedProvince
-                      ? optionArea?.areaData[`${selectedProvince}`].cities
+                      ? provinceData.data?.areaData[`${selectedProvince}`]
+                          .cities
                       : undefined
                   }
-                  isLoading={sizeArea}
+                  isLoading={provinceData.isLoading}
                   onChange={(e) => {
                     e && setValue("kota", e.value as string);
                   }}
@@ -195,7 +198,9 @@ const CommodityForm = ({ commodityData, crud }: ICommodityForm) => {
                     value: field.value ? field.value : null,
                     label: field.value ? field.value : null,
                   }}
-                  placeholder={sizeArea ? "Loading" : "Pilih Kota"}
+                  placeholder={
+                    provinceData.isLoading ? "Loading" : "Pilih Kota"
+                  }
                 />
                 {errors.kota && <ErrorMessage message={errors.kota.message} />}
               </div>
